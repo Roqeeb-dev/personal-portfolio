@@ -25,9 +25,9 @@ export default function Hero() {
       </section>
 
       <div className="flex items-center justify-center space-x-4">
-        <Icon icon={Github} />
-        <Icon icon={Linkedin} />
-        <Icon icon={Mail} />
+        <Icon href="" icon={Github} />
+        <Icon href="" icon={Linkedin} />
+        <Icon href="" icon={Mail} />
       </div>
     </main>
   );
