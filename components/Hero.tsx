@@ -18,7 +18,7 @@ export default function Hero() {
           Full-stack developer specializing in building exceptional digital
           experiences with modern web technologies and thoughtful design.
         </p>
-        <div className="flex items-center gap-4 pt-4">
+        <div className="flex flex-col md:flex-row items-center gap-4 pt-4">
           <Button text="View My Work" variant="primary" icon={ArrowDown} />
           <Button text="Get in Touch" variant="secondary" />
         </div>
