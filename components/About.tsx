@@ -2,26 +2,40 @@ import AboutCard from "./AboutCard";
 
 export default function About() {
   return (
-    <main className="flex items-center space-x-3 py-15 max-w-7xl mx-auto">
-      <section className="max-w-1/2">
-        <p>About Me</p>
-        <h1>
-          Building the <span>Future of Web</span>
+    <main className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 px-6 lg:px-10 py-20 max-w-7xl mx-auto">
+      <section className="w-full lg:w-1/2">
+        <p className="uppercase text-gray-500 tracking-widest text-sm">
+          About Me
+        </p>
+
+        <h1 className="text-[clamp(2.5rem,7vw,4rem)] leading-[1.05] tracking-tight my-3">
+          Building the <br />
+          <span className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 bg-clip-text text-transparent font-bold">
+            Future of Web
+          </span>
         </h1>
-        <p>
-          I'm a passionate developer who loves crafting elegant solutions to
-          complex problems. With expertise in modern web technologies, I create
-          digital experiences that are both visually stunning and technically
-          robust.
-        </p>
-        <p>
-          My approach combines clean code architecture, thoughtful design, and a
-          deep understanding of user needs to deliver products that make a real
-          impact.
-        </p>
+
+        <div className="max-w-2xl">
+          <p className="text-lg leading-relaxed text-gray-600">
+            I'm a passionate developer who loves crafting elegant solutions to
+            complex problems. With expertise in modern web technologies, I
+            create digital experiences that are both visually stunning and
+            technically robust.
+          </p>
+
+          <p className="text-lg leading-relaxed text-gray-600 mt-4">
+            My approach combines clean code architecture, thoughtful design, and
+            a deep understanding of user needs to deliver products that make a
+            real impact.
+          </p>
+        </div>
+
+        <button className="inline-flex items-center gap-2 mt-6 px-6 py-3 border border-gray-300 text-gray-900 transition-all duration-300 ease-out hover:border-gray-900 hover:shadow-lg hover:-translate-y-0.5">
+          Download resume
+        </button>
       </section>
 
-      <section className="max-w-1/2">
+      <section className="w-full lg:w-1/2">
         <AboutCard />
       </section>
     </main>

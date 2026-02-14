@@ -5,8 +5,8 @@ import Icon from "./Icon";
 
 export default function Hero() {
   return (
-    <main className="bg-white w-full">
-      <section className="min-h-screen max-w-5xl mx-auto flex flex-col items-center justify-center space-y-8 px-6">
+    <main className="bg-gray-300/10 w-full">
+      <section className="min-h-screen max-w-5xl mx-auto flex flex-col items-center justify-center space-y-8 p-6">
         <Pill />
         <h1 className="text-[clamp(3.5rem,8vw,6rem)] leading-[1.1] text-center tracking-tight font-light">
           Crafting Digital <br />
@@ -25,9 +25,12 @@ export default function Hero() {
       </section>
 
       <div className="flex items-center justify-center space-x-4">
-        <Icon href="" icon={Github} />
-        <Icon href="" icon={Linkedin} />
-        <Icon href="" icon={Mail} />
+        <Icon href="https://github.com/Roqeeb-dev" icon={Github} />
+        <Icon
+          href="https://www.linkedin.com/in/roqeeb-shafiriyu-51288b29a/"
+          icon={Linkedin}
+        />
+        <Icon href="mailto:shafiriyuroqeeb@gmail.com" icon={Mail} />
       </div>
     </main>
   );
