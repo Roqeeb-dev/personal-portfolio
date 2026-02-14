@@ -2,9 +2,12 @@ import AboutCard from "./AboutCard";
 
 export default function About() {
   return (
-    <main className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 px-6 lg:px-10 py-20 max-w-7xl mx-auto">
+    <main
+      id="about"
+      className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 px-6 py-20 max-w-[1400px] mx-auto"
+    >
       <section className="w-full lg:w-1/2">
-        <p className="uppercase text-gray-500 tracking-widest text-sm">
+        <p className="uppercase text-gray-500 tracking-widest text-sm font-medium">
           About Me
         </p>
 
