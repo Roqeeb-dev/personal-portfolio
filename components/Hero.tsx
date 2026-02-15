@@ -19,8 +19,13 @@ export default function Hero() {
           experiences with modern web technologies and thoughtful design.
         </p>
         <div className="flex flex-col md:flex-row items-center gap-4 pt-4">
-          <Button text="View My Work" variant="primary" icon={ArrowDown} />
-          <Button text="Get in Touch" variant="secondary" />
+          <Button
+            text="View My Work"
+            variant="primary"
+            icon={ArrowDown}
+            href="#projects"
+          />
+          <Button text="Get in Touch" variant="secondary" href="#contact" />
         </div>
       </section>
 

@@ -14,8 +14,8 @@ export default function Navbar() {
           Portfolio
         </h1>
 
-        <div className="hidden md:flex items-center space-x-10">
-          <nav className="flex items-center space-x-8 font-medium text-[16px]">
+        <div className="flex items-center space-x-10">
+          <nav className="hidden md:flex items-center space-x-8 font-medium text-[16px]">
             {links.map((link, idx) => (
               <div key={idx} className="relative group">
                 <a
@@ -29,14 +29,13 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <button className="bg-black text-white px-5 py-2 font-medium hover:opacity-90 transition">
+          <a
+            href="#contact"
+            className="bg-black text-white px-5 py-2 font-medium hover:opacity-90 transition"
+          >
             Get in Touch
-          </button>
+          </a>
         </div>
-
-        <button className="flex md:hidden p-2 rounded-full bg-gray-200 hover:bg-blue-500 hover:text-white transition-all duration-300 transform hover:scale-110 active:scale-95 shadow-md">
-          <User className="w-6 h-6" />
-        </button>
       </div>
     </header>
   );
