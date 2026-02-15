@@ -1,6 +1,5 @@
 import { Send } from "lucide-react";
 import { personalInfo } from "@/lib/data";
-import Button from "./Button";
 
 export default function Contact() {
   return (

@@ -1,13 +1,12 @@
 import { User } from "lucide-react";
 
+export const links: { text: string; to: string }[] = [
+  { text: "About", to: "about" },
+  { text: "Work", to: "work" },
+  { text: "Skills", to: "skills" },
+  { text: "Contact", to: "contact" },
+];
 export default function Navbar() {
-  const links: { text: string; to: string }[] = [
-    { text: "About", to: "about" },
-    { text: "Work", to: "work" },
-    { text: "Skills", to: "skills" },
-    { text: "Contact", to: "contact" },
-  ];
-
   return (
     <header className="sticky top-0 z-50 bg-gray-50/70 backdrop-blur border-b border-gray-200">
       <div className="flex items-center justify-between max-w-[1400px] mx-auto px-6 py-4">
