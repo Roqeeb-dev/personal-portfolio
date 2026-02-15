@@ -1,4 +1,5 @@
 import { projectData } from "@/lib/data";
+import Image from "next/image";
 
 export default function ProjectCard() {
   return (
@@ -9,10 +10,13 @@ export default function ProjectCard() {
           className="group overflow-hidden border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl"
         >
           <div className="relative w-full h-96 overflow-hidden">
-            <img
+            <Image
               src={project.image}
               alt={`${project.title} image`}
-              className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+              fill
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority={false}
             />
           </div>
 

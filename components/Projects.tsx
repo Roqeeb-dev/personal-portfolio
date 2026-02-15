@@ -1,4 +1,5 @@
 import ProjectCard from "./ProjectCard";
+import Button from "./Button";
 
 export default function Projects() {
   return (
@@ -22,6 +23,10 @@ export default function Projects() {
       </div>
 
       <ProjectCard />
+
+      <div className="flex items-center justify-center w-full mt-10">
+        <Button variant="secondary" text="View all projects" />
+      </div>
     </main>
   );
 }
