@@ -1,5 +1,6 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Send } from "lucide-react";
 import { personalInfo } from "@/lib/data";
+import Button from "./Button";
 
 export default function Contact() {
   return (
@@ -22,7 +23,7 @@ export default function Contact() {
       </div>
 
       {/* Contact Section */}
-      <section className="max-w-[1400px] mx-auto px-5 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <section className="max-w-[1400px] mx-auto px-5 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Side - Contact Information */}
         <div className="space-y-6">
           {personalInfo.map(({ icon: Icon, title, text }) => (
@@ -40,7 +41,7 @@ export default function Contact() {
           ))}
 
           {/* Availability Card */}
-          <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg p-8 text-white">
+          <div className="bg-blue-900 p-8 text-white">
             <h3 className="text-2xl font-bold mb-3">Available for Freelance</h3>
             <p className="text-blue-100 leading-relaxed mb-6">
               I'm currently available for freelance work and new opportunities.
@@ -54,7 +55,7 @@ export default function Contact() {
         </div>
 
         {/* Right Side - Contact Form */}
-        <div className="bg-white rounded-lg p-8 border border-gray-200">
+        <div className="bg-white rounded-lg p-8 border border-gray-200 col-span-2">
           <form className="space-y-6">
             {/* Name and Email Row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -69,7 +70,7 @@ export default function Contact() {
                   type="text"
                   id="name"
                   placeholder="Your name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   required
                 />
               </div>
@@ -84,7 +85,7 @@ export default function Contact() {
                   type="email"
                   id="email"
                   placeholder="your.email@example.com"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                   required
                 />
               </div>
@@ -102,7 +103,7 @@ export default function Contact() {
                 type="text"
                 id="subject"
                 placeholder="Project inquiry"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                className="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                 required
               />
             </div>
@@ -119,7 +120,7 @@ export default function Contact() {
                 id="message"
                 rows={6}
                 placeholder="Tell me about your project..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
+                className="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
                 required
               ></textarea>
             </div>
@@ -127,22 +128,10 @@ export default function Contact() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-gray-900 text-white py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 group"
+              className="w-full bg-gray-900 text-white flex items-center py-4 font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 group"
             >
-              Send Message
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-              </svg>
+              <span>Send Message</span>
+              <Send className="text-white w-5 h-5" />
             </button>
           </form>
         </div>
