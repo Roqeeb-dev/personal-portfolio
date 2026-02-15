@@ -1,9 +1,9 @@
-import { Code2, Users } from "lucide-react";
+import { Code, Code2, Mail, MapPin, Phone, Users } from "lucide-react";
 
 interface AboutData {
   title: string;
   text: string;
-  icon: React.ElementType;
+  icon?: React.ElementType;
 }
 
 interface TechStackData {
@@ -110,4 +110,10 @@ export const ReasonsData = [
     title: "Team Collaboration",
     text: "Effective communication and collaboration in agile environments.",
   },
+];
+
+export const personalInfo: AboutData[] = [
+  { title: "Email", text: "shafiriyuroqeeb@gmail.com", icon: Mail },
+  { title: "Phone", text: "+234 7087751548", icon: Phone },
+  { title: "Location", text: "Lagos Nigeria", icon: MapPin },
 ];
