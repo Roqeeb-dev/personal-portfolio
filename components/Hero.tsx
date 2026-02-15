@@ -5,7 +5,7 @@ import Icon from "./Icon";
 
 export default function Hero() {
   return (
-    <main className="bg-gray-300/10 w-full py-5">
+    <main className="bg-gray-300/10 w-full pb-5">
       <section className="min-h-screen max-w-5xl mx-auto flex flex-col items-center justify-center space-y-8">
         <Pill />
         <h1 className="text-[clamp(3.5rem,8vw,6rem)] leading-[1.1] text-center tracking-tight font-light">
