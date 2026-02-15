@@ -7,7 +7,7 @@ export default function WhyChooseMe() {
         {ReasonsData.map(({ title, text }, idx) => (
           <div
             key={idx}
-            className="group relative p-8 border border-slate-300 bg-white transition-all duration-300 ease-out hover:border-slate-900 hover:bg-slate-50/50 hover:-translate-y-1 hover:shadow-sm"
+            className="group relative p-8 border border-slate-300 bg-white transition-all duration-300 ease-out hover:border-slate-900 hover:-translate-y-1 hover:shadow-sm"
           >
             {/* Accent line */}
             <div className="w-10 h-[4px] bg-gradient-to-r from-slate-800 to-slate-900 rounded-full transition-all duration-300 ease-out group-hover:w-16" />
