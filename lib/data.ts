@@ -96,3 +96,18 @@ export const techStackData: TechStackData[] = [
   { text: "Git", proficiency: 60 },
   { text: "RESTful APIs", proficiency: 60 },
 ];
+
+export const ReasonsData = [
+  {
+    title: "Continuous Learning",
+    text: "Always staying updated with the latest technologies and best practices.",
+  },
+  {
+    title: "Problem Solving",
+    text: "Analytical approach to complex challenges with elegant solutions.",
+  },
+  {
+    title: "Team Collaboration",
+    text: "Effective communication and collaboration in agile environments.",
+  },
+];
