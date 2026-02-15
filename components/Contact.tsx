@@ -26,7 +26,10 @@ export default function Contact() {
         {/* Left Side - Contact Information */}
         <div className="space-y-6">
           {personalInfo.map(({ icon: Icon, title, text }) => (
-            <article className="bg-white p-6 border border-gray-200 flex items-start gap-4">
+            <article
+              key={text}
+              className="bg-white p-6 border border-gray-200 flex items-start gap-4"
+            >
               <div className="bg-white border border-gray-300 p-3 shrink-0">
                 {Icon && <Icon className="w-6 h-6 text-gray-700" />}
               </div>
