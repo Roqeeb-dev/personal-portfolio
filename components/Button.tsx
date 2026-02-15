@@ -20,7 +20,7 @@ export default function Button({
   return (
     <a
       href={href}
-      className={`${variant === "primary" ? primaryStyles : secondaryStyles} ${withIconStyles} px-6 py-3 font-medium text-base hover:border-gray-900 hover:shadow-lg transition-all duration-200`}
+      className={`${variant === "primary" ? primaryStyles : secondaryStyles} ${withIconStyles} px-8 py-3.5 font-medium text-base hover:border-gray-900 hover:shadow-lg transition-all duration-200`}
     >
       <span>{text}</span>
       {Icon && <Icon className="w-5 h-5 text-white animate-bounce" />}

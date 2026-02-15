@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { projectData } from "@/lib/data";
 import Image from "next/image";
 import { Github, ExternalLink } from "lucide-react";
@@ -5,9 +8,14 @@ import { Github, ExternalLink } from "lucide-react";
 export default function ProjectCard() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-10 my-8">
-      {projectData.map((project) => (
-        <article
+      {projectData.map((project, idx) => (
+        <motion.article
           key={project.title}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: idx * 0.1 }}
+          viewport={{ once: true }}
+          whileHover={{ y: -8 }}
           className="group overflow-hidden border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out hover:shadow-lg"
         >
           <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 overflow-hidden">
@@ -27,24 +35,28 @@ export default function ProjectCard() {
             {/* Centered Icons */}
             <div className="absolute inset-0 flex items-center justify-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               {project.githubRepoLink && (
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.15 }}
+                  whileTap={{ scale: 0.95 }}
                   href={project.githubRepoLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow hover:scale-110 transition-transform duration-200"
+                  className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow"
                 >
                   <Github className="w-5 h-5" />
-                </a>
+                </motion.a>
               )}
               {project.liveLink && (
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.15 }}
+                  whileTap={{ scale: 0.95 }}
                   href={project.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow hover:scale-110 transition-transform duration-200"
+                  className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow"
                 >
                   <ExternalLink className="w-5 h-5" />
-                </a>
+                </motion.a>
               )}
             </div>
           </div>
@@ -59,17 +71,22 @@ export default function ProjectCard() {
             </p>
 
             <div className="flex flex-wrap items-center gap-2 mt-4">
-              {project.technologies.map((t, idx) => (
-                <span
-                  key={idx}
+              {project.technologies.map((t, techIdx) => (
+                <motion.span
+                  key={techIdx}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: techIdx * 0.05 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05 }}
                   className="rounded-md bg-blue-50 text-blue-800 px-3 py-1 text-sm font-medium transition-all hover:bg-blue-100"
                 >
                   {t}
-                </span>
+                </motion.span>
               ))}
             </div>
           </section>
-        </article>
+        </motion.article>
       ))}
     </section>
   );
