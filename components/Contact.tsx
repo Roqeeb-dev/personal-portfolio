@@ -3,8 +3,72 @@
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { personalInfo } from "@/lib/data";
+import { useState, FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    from_name: "",
+    from_email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      // Send email using EmailJS
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formData,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+      );
+
+      // Success!
+      setSubmitStatus({
+        type: "success",
+        message: "Message sent successfully! I'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        from_name: "",
+        from_email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      // Error handling
+      setSubmitStatus({
+        type: "error",
+        message:
+          "Failed to send message. Please try again or email me directly.",
+      });
+      console.error("EmailJS Error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main id="contact" className="bg-gray-50 py-14 sm:py-16 px-4 sm:px-5">
       {/* Hero Section */}
@@ -105,7 +169,22 @@ export default function Contact() {
           viewport={{ once: true }}
           className="bg-white rounded-lg p-5 sm:p-8 border border-gray-200 lg:col-span-2"
         >
-          <form className="space-y-5 sm:space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+            {/* Success/Error Message */}
+            {submitStatus.type && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`p-4 rounded-lg border ${
+                  submitStatus.type === "success"
+                    ? "bg-green-50 border-green-200 text-green-800"
+                    : "bg-red-50 border-red-200 text-red-800"
+                }`}
+              >
+                {submitStatus.message}
+              </motion.div>
+            )}
+
             {/* Name and Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
               <motion.div
@@ -119,9 +198,13 @@ export default function Contact() {
                 </label>
                 <input
                   type="text"
+                  name="from_name"
+                  value={formData.from_name}
+                  onChange={handleChange}
                   placeholder="Your name"
                   className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-sm sm:text-base"
                   required
+                  disabled={isSubmitting}
                 />
               </motion.div>
 
@@ -136,9 +219,13 @@ export default function Contact() {
                 </label>
                 <input
                   type="email"
+                  name="from_email"
+                  value={formData.from_email}
+                  onChange={handleChange}
                   placeholder="your.email@example.com"
                   className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-sm sm:text-base"
                   required
+                  disabled={isSubmitting}
                 />
               </motion.div>
             </div>
@@ -155,9 +242,13 @@ export default function Contact() {
               </label>
               <input
                 type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
                 placeholder="Project inquiry"
                 className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-sm sm:text-base"
                 required
+                disabled={isSubmitting}
               />
             </motion.div>
 
@@ -173,9 +264,13 @@ export default function Contact() {
               </label>
               <textarea
                 rows={5}
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Tell me about your project..."
                 className="w-full px-4 py-2.5 sm:py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none text-sm sm:text-base"
                 required
+                disabled={isSubmitting}
               />
             </motion.div>
 
@@ -185,13 +280,21 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+              whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
               type="submit"
-              className="w-full bg-gray-900 text-white py-3.5 sm:py-4 font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 group text-sm sm:text-base"
+              disabled={isSubmitting}
+              className={`w-full py-3.5 sm:py-4 font-medium transition-colors flex items-center justify-center gap-2 group text-sm sm:text-base ${
+                isSubmitting
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-gray-900 text-white hover:bg-gray-800"
+              }`}
             >
-              <span>Send Message</span>
-              <Send className="w-5 h-5" />
+              <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
+              {!isSubmitting && <Send className="w-5 h-5" />}
+              {isSubmitting && (
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              )}
             </motion.button>
           </form>
         </motion.div>
