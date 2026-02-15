@@ -49,18 +49,25 @@ export const projectData: ProjectData[] = [
     title: "Resource Sharing Application",
     description:
       "A collaborative platform that enables users to share, manage, and discover resources seamlessly with real-time updates and secure access control.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Firebase"],
+    technologies: [
+      "React",
+      "Javascript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
     githubRepoLink: "https://github.com/Roqeeb-dev/unisphere.git",
     liveLink: "https://unisphere-frontend.vercel.app/",
   },
   {
-    image: "/uni-bg.jpg",
-    title: "Personal Portfolio Website",
+    image: "/khurizah-bg.jpg",
+    title: "Khurizah Innovation Website",
     description:
-      "A modern, responsive developer portfolio showcasing projects, skills, and experience with smooth animations and optimized performance.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+      "A modern, responsive company website for Khurizah Innovation, showcasing the company's mission, services, and team with smooth animations and a clean, professional design.",
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
     githubRepoLink: "",
-    liveLink: "",
+    liveLink: "https://khurizah-innovation.vercel.app/",
   },
   {
     image: "/uni-bg.jpg",

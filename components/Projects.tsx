@@ -3,8 +3,8 @@ import Button from "./Button";
 
 export default function Projects() {
   return (
-    <main className="bg-gray-200/10">
-      <section id="projects" className="max-w-[1400px] mx-auto px-6 py-20">
+    <main id="projects" className="bg-gray-200/10">
+      <section className="max-w-[1400px] mx-auto px-6 py-20">
         <div className="mb-5">
           <p className="uppercase text-gray-500 tracking-widest text-sm font-medium">
             Selected Work
