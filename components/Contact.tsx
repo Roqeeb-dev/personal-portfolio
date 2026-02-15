@@ -1,10 +1,11 @@
+import { Mail, Phone, MapPin } from "lucide-react";
 import { personalInfo } from "@/lib/data";
 
 export default function Contact() {
   return (
-    <main className="bg-gray-300/10 p-5">
-      {/* top */}
-      <div className="flex flex-col items-center justify-center gap-2">
+    <main className="bg-gray-50 py-16 px-5">
+      {/* Hero Section */}
+      <div className="flex flex-col items-center justify-center gap-2 mb-16">
         <p className="uppercase text-gray-500 tracking-widest text-sm font-medium">
           Get in touch
         </p>
@@ -20,20 +21,131 @@ export default function Contact() {
         </p>
       </div>
 
-      {/* bottom */}
-      <section>
-        {/* left */}
-        <div>
+      {/* Contact Section */}
+      <section className="max-w-[1400px] mx-auto px-5 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Left Side - Contact Information */}
+        <div className="space-y-6">
           {personalInfo.map(({ icon: Icon, title, text }) => (
-            <article>
-              <p>{title}</p>
-              <p>{text}</p>
+            <article className="bg-white p-6 border border-gray-200 flex items-start gap-4">
+              <div className="bg-white border border-gray-300 p-3 shrink-0">
+                {Icon && <Icon className="w-6 h-6 text-gray-700" />}
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">
+                  {title}
+                </p>
+                <p className="text-lg font-medium text-gray-900">{text}</p>
+              </div>
             </article>
           ))}
+
+          {/* Availability Card */}
+          <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg p-8 text-white">
+            <h3 className="text-2xl font-bold mb-3">Available for Freelance</h3>
+            <p className="text-blue-100 leading-relaxed mb-6">
+              I'm currently available for freelance work and new opportunities.
+              If you have a project in mind, let's talk!
+            </p>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+              <span className="font-medium">Available Now</span>
+            </div>
+          </div>
         </div>
 
-        {/* right */}
-        <form action=""></form>
+        {/* Right Side - Contact Form */}
+        <div className="bg-white rounded-lg p-8 border border-gray-200">
+          <form className="space-y-6">
+            {/* Name and Email Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  NAME <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Your name"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  EMAIL <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="your.email@example.com"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Subject */}
+            <div>
+              <label
+                htmlFor="subject"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                SUBJECT <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="subject"
+                placeholder="Project inquiry"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                required
+              />
+            </div>
+
+            {/* Message */}
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                MESSAGE <span className="text-red-500">*</span>
+              </label>
+              <textarea
+                id="message"
+                rows={6}
+                placeholder="Tell me about your project..."
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
+                required
+              ></textarea>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full bg-gray-900 text-white py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 group"
+            >
+              Send Message
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
       </section>
     </main>
   );

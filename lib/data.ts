@@ -115,5 +115,5 @@ export const ReasonsData = [
 export const personalInfo: AboutData[] = [
   { title: "Email", text: "shafiriyuroqeeb@gmail.com", icon: Mail },
   { title: "Phone", text: "+234 7087751548", icon: Phone },
-  { title: "Location", text: "Lagos Nigeria", icon: MapPin },
+  { title: "Location", text: "Lagos, Nigeria", icon: MapPin },
 ];
