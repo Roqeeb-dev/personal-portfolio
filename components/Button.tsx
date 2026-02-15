@@ -12,7 +12,7 @@ export default function Button({ text, variant, icon: Icon }: ButtonProps) {
 
   return (
     <button
-      className={`${variant === "primary" ? primaryStyles : secondaryStyles} ${withIconStyles} px-6 py-3 font-medium text-base hover:scale-105 transition-all duration-200`}
+      className={`${variant === "primary" ? primaryStyles : secondaryStyles} ${withIconStyles} px-6 py-3 font-medium text-base hover:border-gray-900 hover:shadow-lg transition-all duration-200`}
     >
       <span>{text}</span>
       {Icon && <Icon className="w-5 h-5 text-white animate-bounce" />}

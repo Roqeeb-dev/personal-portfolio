@@ -8,7 +8,7 @@ export default function ProjectCard() {
       {projectData.map((project) => (
         <article
           key={project.title}
-          className="group overflow-hidden border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out hover:shadow-2xl"
+          className="group overflow-hidden border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out hover:shadow-lg"
         >
           <div className="relative w-full h-96 overflow-hidden">
             {/* Image */}
@@ -26,8 +26,12 @@ export default function ProjectCard() {
 
             {/* Centered Icons */}
             <div className="absolute inset-0 flex items-center justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <Github className="w-10 h-10 bg-white hover:bg-gray-100 text-black p-2 cursor-pointer transition-transform duration-200" />
-              <ExternalLink className="w-10 h-10 bg-white hover:bg-gray-100 text-black p-2 cursor-pointer transition-transform duration-200" />
+              <a href={project.githubRepoLink} target="__blank">
+                <Github className="w-10 h-10 bg-white hover:bg-gray-100 text-black p-2 cursor-pointer transition-transform duration-200" />
+              </a>
+              <a href={project.liveLink} target="__blank">
+                <ExternalLink className="w-10 h-10 bg-white hover:bg-gray-100 text-black p-2 cursor-pointer transition-transform duration-200" />
+              </a>
             </div>
           </div>
 

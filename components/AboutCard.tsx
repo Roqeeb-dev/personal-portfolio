@@ -8,7 +8,7 @@ export default function AboutCard() {
         return (
           <div
             key={idx}
-            className="group border border-gray-200 p-7 transition-all duration-300 ease-out hover:border-gray-900 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-xl"
+            className="group border border-gray-200 p-7 transition-all duration-300 ease-out hover:border-gray-900 hover:-translate-y-0.5 hover:shadow-xl"
           >
             <Icon className="w-10 h-10 p-2 border border-gray-300 transition-colors duration-300 group-hover:border-gray-900 group-hover:shadow-lg group-hover:-translate-y-0.5" />
 

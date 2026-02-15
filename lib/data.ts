@@ -11,6 +11,8 @@ interface ProjectData {
   title: string;
   description: string;
   technologies: string[];
+  githubRepoLink: string;
+  liveLink: string;
 }
 
 export const aboutData: AboutData[] = [
@@ -43,6 +45,8 @@ export const projectData: ProjectData[] = [
     description:
       "A collaborative platform that enables users to share, manage, and discover resources seamlessly with real-time updates and secure access control.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Firebase"],
+    githubRepoLink: "https://github.com/Roqeeb-dev/unisphere.git",
+    liveLink: "https://unisphere-frontend.vercel.app/",
   },
   {
     image: "/uni-bg.jpg",
@@ -50,6 +54,8 @@ export const projectData: ProjectData[] = [
     description:
       "A modern, responsive developer portfolio showcasing projects, skills, and experience with smooth animations and optimized performance.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    githubRepoLink: "",
+    liveLink: "",
   },
   {
     image: "/uni-bg.jpg",
@@ -57,6 +63,8 @@ export const projectData: ProjectData[] = [
     description:
       "A full-featured e-commerce platform with product management, cart functionality, secure checkout, and user authentication.",
     technologies: ["Next.js", "Stripe", "MongoDB", "Tailwind CSS"],
+    githubRepoLink: "",
+    liveLink: "",
   },
   {
     image: "/uni-bg.jpg",
@@ -64,5 +72,7 @@ export const projectData: ProjectData[] = [
     description:
       "A productivity-focused task manager with drag-and-drop support, real-time collaboration, and performance analytics.",
     technologies: ["React", "Redux", "Node.js", "PostgreSQL"],
+    githubRepoLink: "",
+    liveLink: "",
   },
 ];
