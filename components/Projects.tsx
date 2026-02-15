@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
-import Button from "./Button";
 
 export default function Projects() {
   return (
