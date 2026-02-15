@@ -6,6 +6,11 @@ interface AboutData {
   icon: React.ElementType;
 }
 
+interface TechStackData {
+  text: string;
+  proficiency?: number;
+}
+
 interface ProjectData {
   image: string;
   title: string;
@@ -75,4 +80,19 @@ export const projectData: ProjectData[] = [
     githubRepoLink: "",
     liveLink: "",
   },
+];
+
+export const techStackData: TechStackData[] = [
+  { text: "HTML5", proficiency: 90 },
+  { text: "CSS3", proficiency: 85 },
+  { text: "Tailwind CSS", proficiency: 90 },
+  { text: "JavaScript", proficiency: 75 },
+  { text: "TypeScript", proficiency: 75 },
+  { text: "React", proficiency: 80 },
+  { text: "Next.js", proficiency: 70 },
+  { text: "Node.js", proficiency: 60 },
+  { text: "Express.js", proficiency: 60 },
+  { text: "MongoDB", proficiency: 60 },
+  { text: "Git", proficiency: 60 },
+  { text: "RESTful APIs", proficiency: 60 },
 ];
