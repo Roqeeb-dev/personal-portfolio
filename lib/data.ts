@@ -1,4 +1,4 @@
-import { Code, Code2, Mail, MapPin, Phone, Users } from "lucide-react";
+import { Code2, Mail, MapPin, Phone, Users } from "lucide-react";
 
 interface AboutData {
   title: string;
