@@ -45,16 +45,6 @@ export default function Projects() {
         </div>
 
         <ProjectCard />
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex items-center justify-center w-full mt-10"
-        >
-          <Button variant="secondary" text="View all projects" />
-        </motion.div>
       </section>
     </main>
   );

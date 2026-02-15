@@ -66,7 +66,8 @@ export const projectData: ProjectData[] = [
     description:
       "A modern, responsive company website for Khurizah Innovation, showcasing the company's mission, services, and team with smooth animations and a clean, professional design.",
     technologies: ["React", "TypeScript", "Tailwind CSS"],
-    githubRepoLink: "",
+    githubRepoLink:
+      "https://github.com/Roqeeb-dev/khurizah-innovation-website.git",
     liveLink: "https://khurizah-innovation.vercel.app/",
   },
   {
