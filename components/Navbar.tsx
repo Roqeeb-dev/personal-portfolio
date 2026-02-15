@@ -1,3 +1,5 @@
+import { User } from "lucide-react";
+
 export default function Navbar() {
   const links: { text: string; to: string }[] = [
     { text: "About", to: "about" },
@@ -11,7 +13,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between max-w-[1400px] mx-auto px-6 py-4">
         <h1 className="text-xl font-semibold tracking-tight">CynoDev</h1>
 
-        <div className="flex items-center space-x-10">
+        <div className="hidden md:flex items-center space-x-10">
           <nav className="flex items-center space-x-8 font-medium text-[16px]">
             {links.map((link, idx) => (
               <div key={idx} className="relative group">
@@ -30,6 +32,10 @@ export default function Navbar() {
             Get in Touch
           </button>
         </div>
+
+        <button className="flex md:hidden p-2 rounded-full bg-gray-200 hover:bg-blue-500 hover:text-white transition-all duration-300 transform hover:scale-110 active:scale-95 shadow-md">
+          <User className="w-6 h-6" />
+        </button>
       </div>
     </header>
   );

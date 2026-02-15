@@ -1,5 +1,6 @@
 import { projectData } from "@/lib/data";
 import Image from "next/image";
+import { Github, ExternalLink } from "lucide-react";
 
 export default function ProjectCard() {
   return (
@@ -7,9 +8,10 @@ export default function ProjectCard() {
       {projectData.map((project) => (
         <article
           key={project.title}
-          className="group overflow-hidden border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-2xl"
+          className="group overflow-hidden border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out hover:shadow-2xl"
         >
           <div className="relative w-full h-96 overflow-hidden">
+            {/* Image */}
             <Image
               src={project.image}
               alt={`${project.title} image`}
@@ -18,6 +20,15 @@ export default function ProjectCard() {
               sizes="(max-width: 768px) 100vw, 50vw"
               priority={false}
             />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black transition-opacity duration-300 opacity-0 group-hover:opacity-60"></div>
+
+            {/* Centered Icons */}
+            <div className="absolute inset-0 flex items-center justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Github className="w-10 h-10 bg-white hover:bg-gray-100 text-black p-2 cursor-pointer transition-transform duration-200" />
+              <ExternalLink className="w-10 h-10 bg-white hover:bg-gray-100 text-black p-2 cursor-pointer transition-transform duration-200" />
+            </div>
           </div>
 
           <section className="p-6">
