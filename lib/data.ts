@@ -46,12 +46,12 @@ export const aboutData: AboutData[] = [
 export const projectData: ProjectData[] = [
   {
     image: "/uni-bg.jpg",
-    title: "Resource Sharing Application",
+    title: "Unisphere – Resource Sharing Platform",
     description:
-      "A collaborative platform that enables users to share, manage, and discover resources seamlessly with real-time updates and secure access control.",
+      "A full-stack collaborative platform that allows users to share, manage, and discover academic and professional resources, featuring real-time updates, secure authentication, and role-based access control.",
     technologies: [
       "React",
-      "Javascript",
+      "JavaScript",
       "Tailwind CSS",
       "Node.js",
       "Express.js",
@@ -62,31 +62,33 @@ export const projectData: ProjectData[] = [
   },
   {
     image: "/khurizah-bg.jpg",
-    title: "Khurizah Innovation Website",
+    title: "Khurizah Innovation – Corporate Website",
     description:
-      "A modern, responsive company website for Khurizah Innovation, showcasing the company's mission, services, and team with smooth animations and a clean, professional design.",
+      "A modern and responsive corporate website built to showcase Khurizah Innovation’s mission, services, and team, featuring smooth animations, clean layouts, and optimized performance.",
     technologies: ["React", "TypeScript", "Tailwind CSS"],
     githubRepoLink:
       "https://github.com/Roqeeb-dev/khurizah-innovation-website.git",
     liveLink: "https://khurizah-innovation.vercel.app/",
   },
   {
-    image: "/uni-bg.jpg",
-    title: "E-Commerce Web Platform",
+    image: "/prod-bg.jpg",
+    title: "Productivity Dashboard – Notes & Task Manager",
     description:
-      "A full-featured e-commerce platform with product management, cart functionality, secure checkout, and user authentication.",
-    technologies: ["Next.js", "Stripe", "MongoDB", "Tailwind CSS"],
-    githubRepoLink: "",
-    liveLink: "",
+      "A productivity-focused dashboard for managing daily tasks and notes, featuring a clean UI, seamless interactions, and persistent data storage using browser local storage.",
+    technologies: ["HTML", "Tailwind CSS", "TypeScript", "Local Storage"],
+    githubRepoLink:
+      "https://github.com/Roqeeb-dev/personal-productivity-dashboard.git",
+    liveLink:
+      "https://personal-productivity-dashboard-8c2p-fnrjnas8t.vercel.app/",
   },
   {
-    image: "/uni-bg.jpg",
-    title: "Task Management Dashboard",
+    image: "/port-bg.jpg",
+    title: "Personal Portfolio – Developer Showcase",
     description:
-      "A productivity-focused task manager with drag-and-drop support, real-time collaboration, and performance analytics.",
-    technologies: ["React", "Redux", "Node.js", "PostgreSQL"],
-    githubRepoLink: "",
-    liveLink: "",
+      "A high-performance personal portfolio website built with Next.js, featuring smooth animations, responsive layouts, modern UI/UX design, and SEO optimization.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    githubRepoLink: "https://github.com/Roqeeb-dev/personal-portfolio.git",
+    liveLink: "https://portfolio-tawny-omega-37.vercel.app/",
   },
 ];
 
