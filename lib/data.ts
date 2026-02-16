@@ -98,11 +98,11 @@ export const techStackData: TechStackData[] = [
   { text: "TypeScript", proficiency: 75 },
   { text: "React", proficiency: 80 },
   { text: "Next.js", proficiency: 70 },
-  { text: "Node.js", proficiency: 60 },
-  { text: "Express.js", proficiency: 60 },
+  { text: "Node.js", proficiency: 70 },
+  { text: "Express.js", proficiency: 70 },
   { text: "MongoDB", proficiency: 60 },
-  { text: "Git", proficiency: 60 },
-  { text: "RESTful APIs", proficiency: 60 },
+  { text: "Git", proficiency: 75 },
+  { text: "RESTful APIs", proficiency: 70 },
 ];
 
 export const ReasonsData = [

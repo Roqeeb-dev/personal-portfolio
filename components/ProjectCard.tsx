@@ -85,6 +85,20 @@ export default function ProjectCard() {
                 </motion.span>
               ))}
             </div>
+
+            {project.liveLink && (
+              <div className="lg:hidden mt-6">
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-blue-700 hover:text-blue-900 transition-colors"
+                >
+                  View Project
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            )}
           </section>
         </motion.article>
       ))}
