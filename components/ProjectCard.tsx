@@ -18,7 +18,7 @@ export default function ProjectCard() {
           whileHover={{ y: -8 }}
           className="group overflow-hidden border border-gray-200 bg-white shadow-sm transition-all duration-300 ease-out hover:shadow-lg"
         >
-          <div className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96 overflow-hidden">
+          <div className="relative w-full h-64 sm:h-72 md:h-80 overflow-hidden">
             {/* Image */}
             <Image
               src={project.image}

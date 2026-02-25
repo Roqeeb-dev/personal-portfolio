@@ -71,15 +71,20 @@ export const projectData: ProjectData[] = [
     liveLink: "https://khurizah-innovation.vercel.app/",
   },
   {
-    image: "/prod-bg.jpg",
-    title: "Productivity Dashboard – Notes & Task Manager",
+    image: "/blog-bg.jpg",
+    title: "Digital Journal & Productivity Dashboard",
     description:
-      "A productivity-focused dashboard for managing daily tasks and notes, featuring a clean UI, seamless interactions, and persistent data storage using browser local storage.",
-    technologies: ["HTML", "Tailwind CSS", "TypeScript", "Local Storage"],
-    githubRepoLink:
-      "https://github.com/Roqeeb-dev/personal-productivity-dashboard.git",
-    liveLink:
-      "https://personal-productivity-dashboard-8c2p-fnrjnas8t.vercel.app/",
+      "A role-based digital journal platform built with Next.js, featuring a secure admin dashboard, responsive design, clean UI, and persistent state management.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "Local Storage",
+      "SEO",
+    ],
+    githubRepoLink: "https://github.com/Roqeeb-dev/digital-journal.git",
+    liveLink: "https://digital-journal-five.vercel.app/",
   },
   {
     image: "/port-bg.jpg",
