@@ -18,6 +18,7 @@ interface ProjectData {
   technologies: string[];
   githubRepoLink: string;
   liveLink: string;
+  comingSoon?: boolean; // add this
 }
 
 export const aboutData: AboutData[] = [
@@ -44,6 +45,24 @@ export const aboutData: AboutData[] = [
 ];
 
 export const projectData: ProjectData[] = [
+  {
+    image: "/cognify-pic.jpg",
+    title: "Cognify – AI Learning Management System",
+    description:
+      "An intelligent LMS powered by AI that personalizes learning experiences, tracks student progress, and delivers adaptive content — designed to make education smarter, more engaging, and accessible.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "OpenAI API",
+    ],
+    githubRepoLink: "",
+    liveLink: "",
+    comingSoon: true,
+  },
   {
     image: "/uni-bg.jpg",
     title: "Unisphere – Resource Sharing Platform",
