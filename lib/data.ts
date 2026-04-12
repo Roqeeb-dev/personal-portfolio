@@ -18,7 +18,7 @@ interface ProjectData {
   technologies: string[];
   githubRepoLink: string;
   liveLink: string;
-  comingSoon?: boolean; // add this
+  comingSoon?: boolean;
 }
 
 export const aboutData: AboutData[] = [
@@ -46,22 +46,22 @@ export const aboutData: AboutData[] = [
 
 export const projectData: ProjectData[] = [
   {
-    image: "/cognify-pic.jpg",
+    image: "/cognify-bg.png",
     title: "Cognify – AI Learning Management System",
     description:
-      "An intelligent LMS powered by AI that personalizes learning experiences, tracks student progress, and delivers adaptive content — designed to make education smarter, more engaging, and accessible.",
+      "An intelligent LMS powered by AI that personalizes learning experiences, tracks student progress, and delivers adaptive content — designed to make education smarter, more engaging, and accessible. I worked on the frontend of this application",
     technologies: [
       "Next.js",
       "TypeScript",
       "Tailwind CSS",
+      "Zustand",
       "Node.js",
       "Express.js",
       "MongoDB",
       "OpenAI API",
     ],
     githubRepoLink: "",
-    liveLink: "",
-    comingSoon: true,
+    liveLink: "https://ai-lms-ui.vercel.app",
   },
   {
     image: "/uni-bg.jpg",
