@@ -25,9 +25,8 @@ export default function Projects() {
 
   return (
     <section id="projects" className="max-w-[1400px] mx-auto px-6 py-20">
-      {/* Section header */}
       <div className="mb-10">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
+        <p className="text-xs font-semibold uppercase tracking-widest text-foreground-muted mb-2">
           Work
         </p>
         <AnimatePresence mode="wait">
@@ -37,14 +36,14 @@ export default function Projects() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900"
+            className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground"
           >
             {isRecruiter
               ? "Projects & outcomes"
               : "Projects & technical decisions"}
           </motion.h2>
         </AnimatePresence>
-        <p className="mt-3 text-gray-500 text-base max-w-xl">
+        <p className="mt-3 text-foreground-muted text-base max-w-xl">
           {isRecruiter
             ? "What I shipped, the problems each project solved, and the outcomes."
             : "The architectural decisions, patterns, and trade-offs behind each build."}
@@ -59,14 +58,14 @@ export default function Projects() {
             onClick={() => setActiveFilter(f.value)}
             className={`relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 ${
               activeFilter === f.value
-                ? "text-white"
-                : "text-gray-500 hover:text-gray-900"
+                ? "text-secondary-foreground"
+                : "text-foreground-muted hover:text-foreground"
             }`}
           >
             {activeFilter === f.value && (
               <motion.span
                 layoutId="filter-bg"
-                className="absolute inset-0 bg-black rounded-full"
+                className="absolute inset-0 bg-secondary rounded-full"
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             )}
@@ -75,7 +74,6 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Grid */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeFilter}
@@ -92,7 +90,7 @@ export default function Projects() {
       </AnimatePresence>
 
       {filtered.length === 0 && (
-        <p className="text-gray-400 text-sm text-center py-16">
+        <p className="text-foreground-muted text-sm text-center py-16">
           No projects in this category yet.
         </p>
       )}

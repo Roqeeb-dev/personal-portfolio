@@ -17,9 +17,7 @@ const copy = {
     heading: (
       <>
         Final-year CS student,{" "}
-        <span className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 bg-clip-text text-transparent font-bold">
-          already shipping.
-        </span>
+        <span className="text-primary font-bold">already shipping.</span>
       </>
     ),
     body: [
@@ -31,9 +29,7 @@ const copy = {
     heading: (
       <>
         I build{" "}
-        <span className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 bg-clip-text text-transparent font-bold">
-          fast, clean frontends.
-        </span>
+        <span className="text-primary font-bold">fast, clean frontends.</span>
       </>
     ),
     body: [
@@ -50,19 +46,18 @@ export default function About() {
   return (
     <main id="about" className="max-w-[1400px] mx-auto px-6 py-20">
       <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
-        {/* ── Left column ── */}
+        {/* ── Left ── */}
         <section className="w-full lg:w-1/2 lg:sticky lg:top-28 self-start">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="uppercase text-gray-400 tracking-widest text-xs font-semibold mb-3"
+            className="uppercase text-foreground-muted tracking-widest text-xs font-semibold mb-3"
           >
             About Me
           </motion.p>
 
-          {/* Heading — mode-gated */}
           <AnimatePresence mode="wait">
             <motion.h2
               key={`heading-${mode}`}
@@ -70,13 +65,12 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="text-[clamp(2rem,6vw,3.5rem)] leading-[1.1] tracking-tight mb-6 text-slate-900"
+              className="text-[clamp(2rem,6vw,3.5rem)] leading-[1.1] tracking-tight mb-6 text-foreground"
             >
               {activeCopy.heading}
             </motion.h2>
           </AnimatePresence>
 
-          {/* Body copy — mode-gated */}
           <AnimatePresence mode="wait">
             <motion.div
               key={`body-${mode}`}
@@ -89,7 +83,7 @@ export default function About() {
               {activeCopy.body.map((para, i) => (
                 <p
                   key={i}
-                  className="text-base sm:text-lg leading-relaxed text-gray-600"
+                  className="text-base sm:text-lg leading-relaxed text-foreground-muted"
                 >
                   {para}
                 </p>
@@ -103,12 +97,12 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-4 mt-8 pt-8 border-t border-gray-100"
+            className="grid grid-cols-2 gap-4 mt-8 pt-8 border-t border-border"
           >
             {stats.map((s) => (
               <div key={s.label}>
-                <p className="text-2xl font-bold text-slate-900">{s.value}</p>
-                <p className="text-xs text-gray-500 mt-0.5 leading-snug">
+                <p className="text-2xl font-bold text-primary">{s.value}</p>
+                <p className="text-xs text-foreground-muted mt-0.5 leading-snug">
                   {s.label}
                 </p>
               </div>
@@ -126,22 +120,21 @@ export default function About() {
             <motion.a
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
-              href="/Shafiriyu_Roqeeb_Taiwo_Frontend_Engineer_CV.pdf"
-              download="Shafiriyu_Roqeeb_Taiwo_Frontend_Engineer_CV.pdf"
+              href="/my-resume.pdf"
+              download="Roqeeb_Shafiriyu_CV.pdf"
               target="_blank"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white text-sm font-medium hover:bg-gray-900 transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-secondary text-secondary-foreground text-sm font-medium hover:bg-secondary-hover transition-colors"
             >
               <Download className="w-4 h-4" />
               Download CV
             </motion.a>
-
             <motion.a
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
               href="https://www.linkedin.com/in/roqeeb-shafiriyu-51288b29a/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-300 text-gray-800 text-sm font-medium hover:border-gray-900 transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-foreground text-sm font-medium hover:border-foreground transition-colors"
             >
               LinkedIn
               <ArrowUpRight className="w-4 h-4" />
@@ -149,7 +142,7 @@ export default function About() {
           </motion.div>
         </section>
 
-        {/* ── Right column ── */}
+        {/* ── Right ── */}
         <motion.section
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}

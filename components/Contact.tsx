@@ -49,7 +49,6 @@ export default function Contact() {
     subject: "",
     message: "",
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
@@ -68,7 +67,6 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
-
     try {
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -100,49 +98,44 @@ export default function Contact() {
   };
 
   return (
-    <main id="contact" className="bg-gray-50 py-16 px-4 sm:px-6">
-      {/* ── Section header ── */}
+    <main id="contact" className="bg-background-subtle py-16 px-4 sm:px-6">
+      {/* Header */}
       <div className="flex flex-col items-center justify-center gap-2 mb-14 text-center">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="uppercase text-gray-400 tracking-widest text-xs font-semibold"
+          className="uppercase text-foreground-muted tracking-widest text-xs font-semibold"
         >
           Contact
         </motion.p>
-
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-[clamp(2.25rem,7vw,4rem)] leading-[1.05] tracking-tight text-slate-900"
+          className="text-[clamp(2.25rem,7vw,4rem)] leading-[1.05] tracking-tight text-foreground"
         >
-          Get in{" "}
-          <span className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 bg-clip-text text-transparent font-bold">
-            Touch
-          </span>
+          Get in <span className="text-primary font-bold">Touch</span>
         </motion.h2>
-
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
           viewport={{ once: true }}
-          className="text-base sm:text-lg text-slate-500 max-w-xl leading-relaxed"
+          className="text-base sm:text-lg text-foreground-muted max-w-xl leading-relaxed"
         >
           Open to remote frontend roles, freelance projects, and interesting
           conversations. Reach out and I'll reply within a day.
         </motion.p>
       </div>
 
-      {/* ── Main grid ── */}
+      {/* Grid */}
       <section className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* ── Left column ── */}
+        {/* Left column */}
         <div className="flex flex-col gap-4">
-          {/* Schedule card */}
+          {/* Start a conversation */}
           <motion.a
             href="mailto:shafiriyuroqeeb@gmail.com?subject=Let's%20talk"
             initial={{ opacity: 0, x: -16 }}
@@ -150,22 +143,22 @@ export default function Contact() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
             whileHover={{ x: 3 }}
-            className="group bg-white border border-gray-200 p-5 flex items-start gap-4 hover:border-gray-900 transition-all duration-200"
+            className="group bg-card border border-border p-5 flex items-start gap-4 hover:border-foreground transition-all duration-200"
           >
-            <div className="w-10 h-10 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-              <Calendar className="w-5 h-5 text-blue-600" />
+            <div className="w-10 h-10 bg-primary/5 border border-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <Calendar className="w-5 h-5 text-primary" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
-                <p className="font-semibold text-gray-900 text-sm">
+                <p className="font-semibold text-foreground text-sm">
                   Start a conversation
                 </p>
-                <ArrowUpRight className="w-4 h-4 text-gray-400 group-hover:text-gray-900 transition-colors" />
+                <ArrowUpRight className="w-4 h-4 text-foreground-muted group-hover:text-foreground transition-colors" />
               </div>
-              <p className="text-xs text-gray-500 mt-0.5">
+              <p className="text-xs text-foreground-muted mt-0.5">
                 Send me an email to set up a call
               </p>
-              <p className="text-xs text-blue-600 mt-1 font-medium">
+              <p className="text-xs text-primary mt-1 font-medium">
                 Free initial discussion
               </p>
             </div>
@@ -177,22 +170,22 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.08 }}
             viewport={{ once: true }}
-            className="bg-blue-900 p-6 text-white"
+            className="bg-foreground p-6 text-background"
           >
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-blue-200">
+              <div className="w-2.5 h-2.5 bg-success rounded-full animate-pulse" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-background/60">
                 Available Now
               </span>
             </div>
             <h3 className="text-lg font-bold mb-2">
               Open to remote roles & freelance
             </h3>
-            <p className="text-blue-200 text-sm leading-relaxed">
+            <p className="text-background/70 text-sm leading-relaxed">
               Graduating August 2026. Actively looking for frontend engineering
               roles at funded Nigerian or African startups.
             </p>
-            <div className="flex items-center gap-1.5 mt-4 text-blue-300 text-xs">
+            <div className="flex items-center gap-1.5 mt-4 text-background/50 text-xs">
               <Clock className="w-3.5 h-3.5" />
               <span>Lagos, Nigeria · GMT+1</span>
             </div>
@@ -204,9 +197,9 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.12 }}
             viewport={{ once: true }}
-            className="bg-white border border-gray-200 p-5"
+            className="bg-card border border-border p-5"
           >
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-foreground-muted mb-4">
               Connect on social
             </p>
             <div className="space-y-3">
@@ -218,16 +211,18 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="group flex items-center gap-3 hover:opacity-80 transition-opacity"
                 >
-                  <div className="w-8 h-8 border border-gray-200 flex items-center justify-center group-hover:border-gray-900 transition-colors flex-shrink-0">
-                    <Icon className="w-4 h-4 text-gray-600" />
+                  <div className="w-8 h-8 border border-border flex items-center justify-center group-hover:border-foreground transition-colors flex-shrink-0">
+                    <Icon className="w-4 h-4 text-foreground-muted" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs font-semibold text-gray-900">
+                    <p className="text-xs font-semibold text-foreground">
                       {label}
                     </p>
-                    <p className="text-xs text-gray-400 truncate">{handle}</p>
+                    <p className="text-xs text-foreground-muted truncate">
+                      {handle}
+                    </p>
                   </div>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-600 transition-colors ml-auto flex-shrink-0" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-foreground-muted group-hover:text-foreground transition-colors ml-auto flex-shrink-0" />
                 </a>
               ))}
             </div>
@@ -239,18 +234,18 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.16 }}
             viewport={{ once: true }}
-            className="bg-white border border-gray-200 p-5"
+            className="bg-card border border-border p-5"
           >
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-foreground-muted mb-4">
               What to expect
             </p>
             <ul className="space-y-2.5">
               {expectations.map((item) => (
                 <li
                   key={item}
-                  className="flex items-center gap-2.5 text-sm text-gray-700"
+                  className="flex items-center gap-2.5 text-sm text-foreground-muted"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-success flex-shrink-0" />
                   {item}
                 </li>
               ))}
@@ -258,42 +253,40 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        {/* ── Right column — form ── */}
+        {/* Form */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="bg-white border border-gray-200 p-6 sm:p-8 lg:col-span-2"
+          className="bg-card border border-border p-6 sm:p-8 lg:col-span-2"
         >
-          <h3 className="text-xl font-semibold text-gray-900 mb-1">
+          <h3 className="text-xl font-semibold text-foreground mb-1">
             Send a message
           </h3>
-          <p className="text-sm text-gray-400 mb-7">
+          <p className="text-sm text-foreground-muted mb-7">
             Fill out the form and I'll get back to you within 24 hours.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Status */}
             {submitStatus.type && (
               <motion.div
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 className={`p-4 border text-sm ${
                   submitStatus.type === "success"
-                    ? "bg-emerald-50 border-emerald-200 text-emerald-800"
-                    : "bg-red-50 border-red-200 text-red-800"
+                    ? "bg-success/5 border-success/20 text-success"
+                    : "bg-destructive/5 border-destructive/20 text-destructive"
                 }`}
               >
                 {submitStatus.message}
               </motion.div>
             )}
 
-            {/* Name + Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
-                  Full Name <span className="text-red-400">*</span>
+                <label className="block text-xs font-semibold text-foreground-muted uppercase tracking-wider mb-2">
+                  Full Name <span className="text-primary">*</span>
                 </label>
                 <input
                   type="text"
@@ -303,12 +296,12 @@ export default function Contact() {
                   placeholder="Your name"
                   required
                   disabled={isSubmitting}
-                  className="w-full px-4 py-3 border border-gray-200 text-sm outline-none focus:border-gray-900 transition-colors disabled:opacity-50 bg-gray-50 focus:bg-white"
+                  className="w-full px-4 py-3 border border-border bg-background text-foreground text-sm outline-none focus:border-foreground transition-colors disabled:opacity-50 placeholder:text-foreground-muted/50"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
-                  Email <span className="text-red-400">*</span>
+                <label className="block text-xs font-semibold text-foreground-muted uppercase tracking-wider mb-2">
+                  Email <span className="text-primary">*</span>
                 </label>
                 <input
                   type="email"
@@ -318,15 +311,14 @@ export default function Contact() {
                   placeholder="you@company.com"
                   required
                   disabled={isSubmitting}
-                  className="w-full px-4 py-3 border border-gray-200 text-sm outline-none focus:border-gray-900 transition-colors disabled:opacity-50 bg-gray-50 focus:bg-white"
+                  className="w-full px-4 py-3 border border-border bg-background text-foreground text-sm outline-none focus:border-foreground transition-colors disabled:opacity-50 placeholder:text-foreground-muted/50"
                 />
               </div>
             </div>
 
-            {/* Company + Subject */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
+                <label className="block text-xs font-semibold text-foreground-muted uppercase tracking-wider mb-2">
                   Company / Organisation
                 </label>
                 <input
@@ -336,12 +328,12 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="Your company (optional)"
                   disabled={isSubmitting}
-                  className="w-full px-4 py-3 border border-gray-200 text-sm outline-none focus:border-gray-900 transition-colors disabled:opacity-50 bg-gray-50 focus:bg-white"
+                  className="w-full px-4 py-3 border border-border bg-background text-foreground text-sm outline-none focus:border-foreground transition-colors disabled:opacity-50 placeholder:text-foreground-muted/50"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
-                  Subject <span className="text-red-400">*</span>
+                <label className="block text-xs font-semibold text-foreground-muted uppercase tracking-wider mb-2">
+                  Subject <span className="text-primary">*</span>
                 </label>
                 <select
                   name="subject"
@@ -349,7 +341,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
-                  className="w-full px-4 py-3 border border-gray-200 text-sm outline-none focus:border-gray-900 transition-colors disabled:opacity-50 bg-gray-50 focus:bg-white text-gray-700"
+                  className="w-full px-4 py-3 border border-border bg-background text-foreground text-sm outline-none focus:border-foreground transition-colors disabled:opacity-50"
                 >
                   <option value="" disabled>
                     Select a topic
@@ -362,10 +354,9 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Message */}
             <div>
-              <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
-                Message <span className="text-red-400">*</span>
+              <label className="block text-xs font-semibold text-foreground-muted uppercase tracking-wider mb-2">
+                Message <span className="text-primary">*</span>
               </label>
               <textarea
                 rows={6}
@@ -375,11 +366,10 @@ export default function Contact() {
                 placeholder="Tell me about your project, role, or what's on your mind..."
                 required
                 disabled={isSubmitting}
-                className="w-full px-4 py-3 border border-gray-200 text-sm outline-none focus:border-gray-900 transition-colors resize-none disabled:opacity-50 bg-gray-50 focus:bg-white"
+                className="w-full px-4 py-3 border border-border bg-background text-foreground text-sm outline-none focus:border-foreground transition-colors resize-none disabled:opacity-50 placeholder:text-foreground-muted/50"
               />
             </div>
 
-            {/* Submit */}
             <motion.button
               whileHover={{ scale: isSubmitting ? 1 : 1.01 }}
               whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
@@ -387,13 +377,13 @@ export default function Contact() {
               disabled={isSubmitting}
               className={`w-full py-4 font-semibold text-sm tracking-wide flex items-center justify-center gap-2 transition-colors ${
                 isSubmitting
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-gray-900 text-white hover:bg-black"
+                  ? "bg-muted text-foreground-muted cursor-not-allowed"
+                  : "bg-primary text-primary-foreground hover:bg-primary-hover"
               }`}
             >
               {isSubmitting ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-foreground-muted border-t-transparent rounded-full animate-spin" />
                   Sending…
                 </>
               ) : (
