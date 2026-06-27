@@ -18,33 +18,33 @@ const categoryMeta: Record<
     label: "Frontend",
     description:
       "Where interfaces come to life — components, layout, animation, and everything the user actually sees and touches.",
-    color: "text-blue-600",
-    dotColor: "bg-blue-500",
-    borderColor: "border-blue-100",
+    color: "text-primary",
+    dotColor: "bg-primary",
+    borderColor: "border-primary/15",
   },
   language: {
     label: "Languages",
     description:
       "The foundation everything else is built on. TypeScript is my default — JavaScript when I need to move fast.",
-    color: "text-violet-600",
-    dotColor: "bg-violet-500",
-    borderColor: "border-violet-100",
+    color: "text-accent",
+    dotColor: "bg-accent",
+    borderColor: "border-accent/15",
   },
   backend: {
     label: "Backend & Data",
     description:
       "APIs, databases, and ORMs. Enough depth to build and debug full-stack features without waiting on a backend developer.",
-    color: "text-emerald-600",
-    dotColor: "bg-emerald-500",
-    borderColor: "border-emerald-100",
+    color: "text-primary",
+    dotColor: "bg-primary",
+    borderColor: "border-primary/15",
   },
   tooling: {
     label: "Tooling & Infra",
     description:
       "Git, deployment pipelines, media management, and the glue that holds production apps together.",
-    color: "text-amber-600",
-    dotColor: "bg-amber-500",
-    borderColor: "border-amber-100",
+    color: "text-accent",
+    dotColor: "bg-accent",
+    borderColor: "border-accent/15",
   },
 };
 
@@ -62,7 +62,7 @@ function TechCircle({ label }: { label: string }) {
   return (
     <div
       title={label}
-      className="w-9 h-9 rounded-full bg-gray-900 text-white flex items-center justify-center text-[10px] font-bold tracking-tight flex-shrink-0 border-2 border-white shadow-sm -ml-2 first:ml-0"
+      className="w-9 h-9 rounded-full bg-foreground text-background flex items-center justify-center text-[10px] font-bold tracking-tight flex-shrink-0 border-2 border-background shadow-sm -ml-2 first:ml-0"
     >
       {abbr}
     </div>
@@ -81,14 +81,14 @@ export default function Skills() {
 
   return (
     <main id="skills" className="max-w-[1400px] mx-auto px-6 py-20">
-      {/* ── Section header ── */}
+      {/* Header */}
       <div className="mb-14">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="uppercase text-gray-400 tracking-widest text-xs font-semibold mb-4"
+          className="uppercase text-foreground-muted tracking-widest text-xs font-semibold mb-4"
         >
           Expertise
         </motion.p>
@@ -101,21 +101,15 @@ export default function Skills() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="text-[clamp(2.5rem,7vw,5rem)] leading-[0.95] tracking-tight font-bold text-slate-900"
+              className="text-[clamp(2.5rem,7vw,5rem)] leading-[0.95] tracking-tight font-bold text-foreground"
             >
               {isRecruiter ? (
                 <>
-                  What I{" "}
-                  <span className="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 bg-clip-text text-transparent">
-                    work with.
-                  </span>
+                  What I <span className="text-primary">work with.</span>
                 </>
               ) : (
                 <>
-                  Skills &{" "}
-                  <span className="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 bg-clip-text text-transparent">
-                    Tools.
-                  </span>
+                  Skills & <span className="text-primary">Tools.</span>
                 </>
               )}
             </motion.h2>
@@ -128,7 +122,7 @@ export default function Skills() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="text-sm text-slate-400 leading-relaxed max-w-xs sm:text-right pb-1"
+              className="text-sm text-foreground-muted leading-relaxed max-w-xs sm:text-right pb-1"
             >
               {isRecruiter
                 ? "My core stack across every production app I've shipped — grouped by concern."
@@ -138,7 +132,7 @@ export default function Skills() {
         </div>
       </div>
 
-      {/* ── Category rows ── */}
+      {/* Category rows */}
       <AnimatePresence mode="wait">
         <motion.div
           key={mode}
@@ -146,7 +140,7 @@ export default function Skills() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -16 }}
           transition={{ duration: 0.25 }}
-          className="divide-y divide-gray-100 border-t border-gray-100"
+          className="divide-y divide-border border-t border-border"
         >
           {grouped.map(({ cat, meta, items }, groupIdx) => (
             <motion.div
@@ -157,23 +151,23 @@ export default function Skills() {
               viewport={{ once: true }}
               className="py-10 grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-6 md:gap-12 items-start"
             >
-              {/* Column 1: category label + description */}
+              {/* Category label */}
               <div>
                 <p className={`text-base font-bold mb-1.5 ${meta.color}`}>
                   {meta.label}
                 </p>
-                <p className="text-xs text-gray-400 leading-relaxed">
+                <p className="text-xs text-foreground-muted leading-relaxed">
                   {meta.description}
                 </p>
               </div>
 
-              {/* Column 2: skills */}
+              {/* Skills */}
               {isRecruiter ? (
                 <div className="flex flex-wrap gap-x-8 gap-y-2">
                   {items.map((item) => (
                     <span
                       key={item.text}
-                      className="text-base font-semibold text-slate-800"
+                      className="text-base font-semibold text-foreground"
                     >
                       {item.text}
                     </span>
@@ -192,12 +186,12 @@ export default function Skills() {
                       }}
                       viewport={{ once: true }}
                       whileHover={{ x: 3 }}
-                      className={`flex items-center gap-2.5 px-3 py-2.5 border ${meta.borderColor} bg-white hover:shadow-sm transition-all duration-200 group`}
+                      className={`flex items-center gap-2.5 px-3 py-2.5 border ${meta.borderColor} bg-card hover:shadow-sm transition-all duration-200 group`}
                     >
                       <span
                         className={`w-2 h-2 rounded-full flex-shrink-0 ${meta.dotColor}`}
                       />
-                      <span className="text-sm font-medium text-slate-800 group-hover:text-slate-900 transition-colors">
+                      <span className="text-sm font-medium text-foreground group-hover:text-foreground transition-colors">
                         {item.text}
                       </span>
                     </motion.div>
@@ -205,7 +199,7 @@ export default function Skills() {
                 </div>
               )}
 
-              {/* Column 3: icon circles */}
+              {/* Icon circles */}
               <div className="flex items-center">
                 {items.map((item) => (
                   <TechCircle key={item.text} label={item.text} />

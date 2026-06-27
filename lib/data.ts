@@ -106,7 +106,7 @@ export const experienceData: ExperienceData[] = [
     company: "Lagos State University",
     period: "2022 – Aug 2026",
     type: "education",
-    description: "CGPA: 4.69 / 5.0. Graduating August 2026.",
+    description: "Top 10 in the department. Graduating August 2026.",
   },
 ];
 
@@ -120,7 +120,7 @@ export const projectData: ProjectData[] = [
     featured: true,
 
     recruiterSummary:
-      "Web-GIS navigation app for a 400-acre university campus, built as a final-year project. Lets students find buildings, plan routes, and get guided turn-by-turn directions — live and publicly accessible.",
+      "Web-GIS navigation app for a 400-acre university campus, built as a final-year project. Lets students find buildings, plan routes, and get guided turn-by-turn directions; live and publicly accessible.",
     metrics: [
       { value: "400+", label: "acre campus mapped" },
       { value: "FYP", label: "first class project" },
