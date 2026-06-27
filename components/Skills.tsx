@@ -6,35 +6,68 @@ import { useViewModeStore } from "@/store/viewModeStore";
 
 const categoryMeta: Record<
   string,
-  { label: string; description: string; color: string; bg: string }
+  {
+    label: string;
+    description: string;
+    color: string;
+    dotColor: string;
+    borderColor: string;
+  }
 > = {
   frontend: {
     label: "Frontend",
-    description: "UI, components, animation",
-    color: "text-blue-700",
-    bg: "bg-blue-50 border-blue-100",
+    description:
+      "Where interfaces come to life — components, layout, animation, and everything the user actually sees and touches.",
+    color: "text-blue-600",
+    dotColor: "bg-blue-500",
+    borderColor: "border-blue-100",
   },
   language: {
     label: "Languages",
-    description: "JavaScript & TypeScript",
-    color: "text-violet-700",
-    bg: "bg-violet-50 border-violet-100",
+    description:
+      "The foundation everything else is built on. TypeScript is my default — JavaScript when I need to move fast.",
+    color: "text-violet-600",
+    dotColor: "bg-violet-500",
+    borderColor: "border-violet-100",
   },
   backend: {
     label: "Backend & Data",
-    description: "APIs, databases, ORMs",
-    color: "text-emerald-700",
-    bg: "bg-emerald-50 border-emerald-100",
+    description:
+      "APIs, databases, and ORMs. Enough depth to build and debug full-stack features without waiting on a backend developer.",
+    color: "text-emerald-600",
+    dotColor: "bg-emerald-500",
+    borderColor: "border-emerald-100",
   },
   tooling: {
     label: "Tooling & Infra",
-    description: "Git, deployment, integrations",
-    color: "text-amber-700",
-    bg: "bg-amber-50 border-amber-100",
+    description:
+      "Git, deployment pipelines, media management, and the glue that holds production apps together.",
+    color: "text-amber-600",
+    dotColor: "bg-amber-500",
+    borderColor: "border-amber-100",
   },
 };
 
 const categoryOrder = ["frontend", "language", "backend", "tooling"] as const;
+
+function TechCircle({ label }: { label: string }) {
+  const abbr = label
+    .replace(/\.(js|ts|css)$/i, "")
+    .split(/[\s/]+/)
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
+  return (
+    <div
+      title={label}
+      className="w-9 h-9 rounded-full bg-gray-900 text-white flex items-center justify-center text-[10px] font-bold tracking-tight flex-shrink-0 border-2 border-white shadow-sm -ml-2 first:ml-0"
+    >
+      {abbr}
+    </div>
+  );
+}
 
 export default function Skills() {
   const { mode } = useViewModeStore();
@@ -49,161 +82,138 @@ export default function Skills() {
   return (
     <main id="skills" className="max-w-[1400px] mx-auto px-6 py-20">
       {/* ── Section header ── */}
-      <div className="mb-10">
+      <div className="mb-14">
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="uppercase text-gray-400 tracking-widest text-xs font-semibold mb-2"
+          className="uppercase text-gray-400 tracking-widest text-xs font-semibold mb-4"
         >
           Expertise
         </motion.p>
 
-        <AnimatePresence mode="wait">
-          <motion.h2
-            key={`heading-${mode}`}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
-            className="text-[clamp(2.5rem,7vw,4rem)] leading-[1.05] tracking-tight text-slate-900"
-          >
-            {isRecruiter ? (
-              <>
-                What I <br />
-                <span className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 bg-clip-text text-transparent font-bold">
-                  work with
-                </span>
-              </>
-            ) : (
-              <>
-                Skills & <br />
-                <span className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 bg-clip-text text-transparent font-bold">
-                  Technologies
-                </span>
-              </>
-            )}
-          </motion.h2>
-        </AnimatePresence>
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <AnimatePresence mode="wait">
+            <motion.h2
+              key={`heading-${mode}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="text-[clamp(2.5rem,7vw,5rem)] leading-[0.95] tracking-tight font-bold text-slate-900"
+            >
+              {isRecruiter ? (
+                <>
+                  What I{" "}
+                  <span className="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 bg-clip-text text-transparent">
+                    work with.
+                  </span>
+                </>
+              ) : (
+                <>
+                  Skills &{" "}
+                  <span className="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-900 bg-clip-text text-transparent">
+                    Tools.
+                  </span>
+                </>
+              )}
+            </motion.h2>
+          </AnimatePresence>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          viewport={{ once: true }}
-          className="text-base sm:text-lg leading-relaxed text-slate-500 max-w-xl mt-3"
-        >
-          {isRecruiter
-            ? "My core stack across every project I've shipped — grouped by concern."
-            : "Proficient in modern tools and frameworks, with a focus on scalable, performant frontend architecture."}
-        </motion.p>
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={`sub-${mode}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="text-sm text-slate-400 leading-relaxed max-w-xs sm:text-right pb-1"
+            >
+              {isRecruiter
+                ? "My core stack across every production app I've shipped — grouped by concern."
+                : "The tools I reach for in production. Grouped by layer, not by hype."}
+            </motion.p>
+          </AnimatePresence>
+        </div>
       </div>
 
+      {/* ── Category rows ── */}
       <AnimatePresence mode="wait">
-        {isRecruiter ? (
-          <motion.div
-            key="recruiter"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-5"
-          >
-            {grouped.map(({ cat, meta, items }, groupIdx) => (
-              <motion.div
-                key={cat}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: groupIdx * 0.07 }}
-                viewport={{ once: true }}
-                className={`border rounded-2xl p-5 ${meta.bg}`}
-              >
-                <div className="mb-4">
-                  <p className={`text-sm font-bold ${meta.color}`}>
-                    {meta.label}
-                  </p>
-                  <p className="text-xs text-gray-400 mt-0.5">
-                    {meta.description}
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-2">
+        <motion.div
+          key={mode}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -16 }}
+          transition={{ duration: 0.25 }}
+          className="divide-y divide-gray-100 border-t border-gray-100"
+        >
+          {grouped.map(({ cat, meta, items }, groupIdx) => (
+            <motion.div
+              key={cat}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: groupIdx * 0.07 }}
+              viewport={{ once: true }}
+              className="py-10 grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-6 md:gap-12 items-start"
+            >
+              {/* Column 1: category label + description */}
+              <div>
+                <p className={`text-base font-bold mb-1.5 ${meta.color}`}>
+                  {meta.label}
+                </p>
+                <p className="text-xs text-gray-400 leading-relaxed">
+                  {meta.description}
+                </p>
+              </div>
+
+              {/* Column 2: skills */}
+              {isRecruiter ? (
+                <div className="flex flex-wrap gap-x-8 gap-y-2">
                   {items.map((item) => (
                     <span
                       key={item.text}
-                      className="px-3 py-1.5 rounded-lg bg-white border border-white/80 text-xs font-semibold text-gray-700 shadow-sm"
+                      className="text-base font-semibold text-slate-800"
                     >
                       {item.text}
                     </span>
                   ))}
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        ) : (
-          <motion.div
-            key="engineer"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25 }}
-            className="space-y-8"
-          >
-            {grouped.map(({ cat, meta, items }, groupIdx) => (
-              <motion.div
-                key={cat}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: groupIdx * 0.06 }}
-                viewport={{ once: true }}
-              >
-                {/* Group heading */}
-                <div className="flex items-center gap-3 mb-4">
-                  <p
-                    className={`text-xs font-bold uppercase tracking-widest ${meta.color}`}
-                  >
-                    {meta.label}
-                  </p>
-                  <div className="flex-1 h-px bg-gray-100" />
-                </div>
-
-                {/* Skill chips */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              ) : (
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5">
                   {items.map((item, itemIdx) => (
                     <motion.div
                       key={item.text}
                       initial={{ opacity: 0, scale: 0.92 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{
-                        duration: 0.3,
-                        delay: groupIdx * 0.06 + itemIdx * 0.04,
+                        duration: 0.25,
+                        delay: groupIdx * 0.05 + itemIdx * 0.04,
                       }}
                       viewport={{ once: true }}
-                      whileHover={{ y: -3 }}
-                      className="group flex items-center gap-2.5 p-3 border border-slate-200 bg-white hover:border-blue-200 hover:shadow-sm transition-all duration-200"
+                      whileHover={{ x: 3 }}
+                      className={`flex items-center gap-2.5 px-3 py-2.5 border ${meta.borderColor} bg-white hover:shadow-sm transition-all duration-200 group`}
                     >
-                      {/* Colour dot */}
                       <span
-                        className={`w-2 h-2 rounded-full flex-shrink-0 ${
-                          cat === "frontend"
-                            ? "bg-blue-500"
-                            : cat === "language"
-                              ? "bg-violet-500"
-                              : cat === "backend"
-                                ? "bg-emerald-500"
-                                : "bg-amber-500"
-                        }`}
+                        className={`w-2 h-2 rounded-full flex-shrink-0 ${meta.dotColor}`}
                       />
-                      <p className="text-sm font-medium text-slate-800 group-hover:text-slate-900 transition-colors">
+                      <span className="text-sm font-medium text-slate-800 group-hover:text-slate-900 transition-colors">
                         {item.text}
-                      </p>
+                      </span>
                     </motion.div>
                   ))}
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
+              )}
+
+              {/* Column 3: icon circles */}
+              <div className="flex items-center">
+                {items.map((item) => (
+                  <TechCircle key={item.text} label={item.text} />
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </AnimatePresence>
     </main>
   );

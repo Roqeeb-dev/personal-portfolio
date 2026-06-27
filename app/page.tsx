@@ -2,7 +2,6 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
-import WhyChooseMe from "@/components/WhyChooseMe";
 import Contact from "@/components/Contact";
 
 export const metadata = {
@@ -24,7 +23,6 @@ export default function Home() {
       <About />
       <Projects />
       <Skills />
-      <WhyChooseMe />
       <Contact />
     </>
   );

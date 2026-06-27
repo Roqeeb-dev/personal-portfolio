@@ -112,7 +112,7 @@ export const experienceData: ExperienceData[] = [
 
 export const projectData: ProjectData[] = [
   {
-    image: "/lasunav-bg.png",
+    image: "/navigate_bg.jpg",
     title: "LASU Navigate – Campus Navigation System",
     shortTitle: "LASU Navigate",
     role: "Frontend (solo)",
