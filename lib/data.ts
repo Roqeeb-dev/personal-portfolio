@@ -8,18 +8,50 @@ interface AboutData {
 
 interface TechStackData {
   text: string;
+  category: "frontend" | "language" | "backend" | "tooling";
   proficiency?: number;
 }
 
-interface ProjectData {
+export interface ProjectMetric {
+  label: string;
+  value: string;
+}
+
+export interface ProjectData {
   image: string;
   title: string;
+  shortTitle: string;
+  role: string;
+  category: "frontend" | "fullstack";
+  featured?: boolean;
+  comingSoon?: boolean;
+
+  recruiterSummary: string;
+  metrics: ProjectMetric[];
+
+  problem: string;
+  engineerHighlights: string[];
+
   description: string;
   technologies: string[];
-  githubRepoLink: string;
-  liveLink: string;
-  comingSoon?: boolean;
+  githubRepoLink?: string;
+  liveLink?: string;
 }
+
+export interface ExperienceData {
+  role: string;
+  company: string;
+  period: string;
+  type: "work" | "award" | "education";
+  description: string;
+}
+
+export const links: { text: string; to: string }[] = [
+  { text: "About", to: "about" },
+  { text: "Projects", to: "projects" },
+  { text: "Skills", to: "skills" },
+  { text: "Contact", to: "contact" },
+];
 
 export const aboutData: AboutData[] = [
   {
@@ -44,91 +76,224 @@ export const aboutData: AboutData[] = [
   },
 ];
 
+export const experienceData: ExperienceData[] = [
+  {
+    role: "Frontend Engineering Intern",
+    company: "Tektariq IT Solutions",
+    period: "Mar 2026 – Present",
+    type: "work",
+    description:
+      "Building and maintaining frontend features for client-facing products.",
+  },
+  {
+    role: "Frontend Development Instructor",
+    company: "Tektariq Academy",
+    period: "Jun 2026 – Present",
+    type: "work",
+    description:
+      "Designed and deliver a 16-week curriculum covering Next.js, TypeScript, Tailwind CSS, and interview prep.",
+  },
+  {
+    role: "Best Graduating Student – Web Development Stack",
+    company: "IOTB-TECH 2025",
+    period: "2025",
+    type: "award",
+    description:
+      "Recognised among graduating students for excellence in the web development track.",
+  },
+  {
+    role: "BSc Computer Science – First Class",
+    company: "Lagos State University",
+    period: "2022 – Aug 2026",
+    type: "education",
+    description: "CGPA: 4.69 / 5.0. Graduating August 2026.",
+  },
+];
+
 export const projectData: ProjectData[] = [
+  {
+    image: "/navigate_bg.jpg",
+    title: "LASU Navigate – Campus Navigation System",
+    shortTitle: "LASU Navigate",
+    role: "Frontend (solo)",
+    category: "frontend",
+    featured: true,
+
+    recruiterSummary:
+      "Web-GIS navigation app for a 400-acre university campus, built as a final-year project. Lets students find buildings, plan routes, and get guided turn-by-turn directions — live and publicly accessible.",
+    metrics: [
+      { value: "400+", label: "acre campus mapped" },
+      { value: "FYP", label: "first class project" },
+      { value: "~5 weeks", label: "active build time" },
+      { value: "Live", label: "deployed on Vercel" },
+    ],
+
+    problem:
+      "LASU's 400-acre campus has no official digital navigation tool. New students and visitors routinely get lost. The goal was to build a web-based GIS solution that could map every building, compute navigable paths, and guide users in real time.",
+    engineerHighlights: [
+      "Integrated Mapbox GL JS via react-map-gl for interactive campus tile rendering and custom GeoJSON overlays",
+      "Built a guided navigation flow with step-by-step directions using Mapbox Directions API",
+      "Graph-based routing engine (Dijkstra) is in active development as a phase 2 feature to replace the current API-dependent routing",
+      "Architected the map state with React context to keep Mapbox instance decoupled from UI components",
+      "Handled complex coordinate transformations and bounding box constraints to lock the map to campus boundaries",
+    ],
+
+    description:
+      "A web-GIS campus navigation app for Lagos State University. Students and visitors can search for buildings, view the interactive campus map, and get guided directions — built as a final-year project with Next.js 15 and Mapbox GL JS.",
+    technologies: [
+      "Next.js 15",
+      "TypeScript",
+      "Mapbox GL JS",
+      "react-map-gl",
+      "GeoJSON",
+      "Tailwind CSS",
+      "React Context",
+    ],
+    githubRepoLink: "https://github.com/Roqeeb-dev/lasumap.git",
+    liveLink: "https://lasunav-sable.vercel.app/",
+  },
+
+  {
+    image: "/tayora-bg.jpg",
+    title: "Tayora Sustain – Circular Economy Marketplace",
+    shortTitle: "Tayora Sustain",
+    role: "Frontend (solo)",
+    category: "fullstack",
+    featured: true,
+
+    recruiterSummary:
+      "Three-sided marketplace connecting textile waste suppliers, requesters, and admins — built solo on the frontend in under 3 weeks to a stable beta. Handles role-based auth, image uploads, and a full material tracking flow.",
+    metrics: [
+      { value: "3", label: "user portals" },
+      { value: "< 3 weeks", label: "solo MVP" },
+      { value: "Closed beta", label: "active testers" },
+      { value: "Live", label: "deployed on Vercel" },
+    ],
+
+    problem:
+      "Textile waste is a growing problem in emerging markets with no structured collection or redistribution system. Tayora Sustain needed a marketplace where suppliers could list waste materials, requesters could match and claim them, and admins could oversee the entire flow — all with proper auth and role separation.",
+    engineerHighlights: [
+      "Built the entire frontend solo: three distinct portals (supplier, requester, admin) with role-based routing and protected pages",
+      "Integrated TanStack Query for server state, Zustand scoped to UI-only state — no business logic in components",
+      "Implemented Cloudinary image uploads with client-side preview and optimistic UI updates",
+      "Debugged a complex cross-origin auth issue: the FastAPI backend's session cookies weren't persisting across origins — resolved by configuring a Next.js proxy rewrite and switching to sessionStorage for token persistence",
+      "Modelled the full material flow (submitted → collected → sorted → matched → fulfilled) as discrete status transitions, surfaced clearly in both portals",
+      "Stack: Next.js 15, TypeScript, Tailwind CSS v4, Zustand, TanStack Query, FastAPI backend (separate developer)",
+    ],
+
+    description:
+      "A circular economy marketplace for textile waste, connecting suppliers, requesters, and admins in a three-sided platform. Built the complete frontend solo — auth, image uploads, role-based dashboards, and a full material lifecycle flow.",
+    technologies: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Zustand",
+      "TanStack Query",
+      "Cloudinary",
+      "FastAPI",
+    ],
+    githubRepoLink: "https://github.com/Roqeeb-dev/tayora_sustain.git",
+    liveLink: "https://tayorasustain.vercel.app",
+  },
+
   {
     image: "/cognify-bg.png",
     title: "Cognify – AI Learning Management System",
+    shortTitle: "Cognify",
+    role: "Frontend (solo)",
+    category: "fullstack",
+    featured: true,
+
+    recruiterSummary:
+      "Full-featured LMS with student and instructor dashboards, course creation, multi-format lesson delivery, and an AI tutor stub. Frontend built solo — 500+ unique visitors tracked via Vercel Analytics since launch.",
+    metrics: [
+      { value: "500+", label: "unique visitors" },
+      { value: "2", label: "user roles" },
+      { value: "~2 months", label: "since launch" },
+      { value: "Live", label: "deployed on Vercel" },
+    ],
+
+    problem:
+      "Build a production-grade LMS that supports multiple user roles, course creation workflows, progress tracking, and an AI assistant — with a clean separation between student and instructor experiences.",
+    engineerHighlights: [
+      "Established a ServerType / NormalizedType pattern: raw API responses are normalised at the service layer before touching component state — no scattered mapping logic",
+      "Hooks own toast notifications and return response values so parent components can chain actions without prop-drilling callbacks",
+      "Zustand scoped strictly to UI state; TanStack Query owns all server state — no cache duplication",
+      "Role guards implemented in hooks, not in layout components, so access logic is testable and reusable",
+      "OpenAI API integrated as an AI tutor stub — structured to swap in any LLM provider without touching UI code",
+    ],
+
     description:
-      "An intelligent LMS powered by AI that personalizes learning experiences, tracks student progress, and delivers adaptive content — designed to make education smarter, more engaging, and accessible. I worked on the frontend of this application",
+      "An intelligent LMS with student and instructor dashboards, course creation, multi-format lesson delivery, quiz system, progress tracking, and an AI tutor. Frontend built solo with a clear architectural separation between UI state and server state.",
     technologies: [
-      "Next.js",
+      "Next.js 15",
       "TypeScript",
       "Tailwind CSS",
       "Zustand",
+      "TanStack Query",
       "Node.js",
       "Express.js",
       "MongoDB",
       "OpenAI API",
     ],
-    githubRepoLink: "",
+    githubRepoLink: "https://github.com/Roqeeb-dev/ai-lms-ui.git",
     liveLink: "https://ai-lms-ui.vercel.app",
   },
-  {
-    image: "/uni-bg.jpg",
-    title: "Unisphere – Resource Sharing Platform",
-    description:
-      "A full-stack collaborative platform that allows users to share, manage, and discover academic and professional resources, featuring real-time updates, secure authentication, and role-based access control.",
-    technologies: [
-      "React",
-      "JavaScript",
-      "Tailwind CSS",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-    ],
-    githubRepoLink: "https://github.com/Roqeeb-dev/unisphere.git",
-    liveLink: "https://unisphere-frontend.vercel.app/",
-  },
+
   {
     image: "/khurizah-bg.jpg",
     title: "Khurizah Innovation – Corporate Website",
+    shortTitle: "Khurizah Innovation",
+    role: "Frontend (freelance)",
+    category: "frontend",
+    featured: false,
+
+    recruiterSummary:
+      "Freelance corporate website for a tech company — responsive, animated, and performance-optimised. Delivered as a complete production build.",
+    metrics: [
+      { value: "100%", label: "responsive" },
+      { value: "Freelance", label: "client project" },
+      { value: "Live", label: "deployed" },
+    ],
+
+    problem:
+      "Khurizah Innovation needed a modern web presence to showcase their mission, services, and team without an existing design system or content structure in place.",
+    engineerHighlights: [
+      "Built from scratch with no existing design system — defined layout, spacing, and component structure independently",
+      "Implemented scroll-triggered animations with Framer Motion for section reveals and hero transitions",
+      "Optimised Core Web Vitals: lazy-loaded images, minimal JS bundle, semantic HTML for accessibility",
+    ],
+
     description:
-      "A modern and responsive corporate website built to showcase Khurizah Innovation’s mission, services, and team, featuring smooth animations, clean layouts, and optimized performance.",
-    technologies: ["React", "TypeScript", "Tailwind CSS"],
+      "A responsive corporate website for Khurizah Innovation, featuring smooth animations, clean layouts, and optimised performance. Delivered as a freelance project.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
     githubRepoLink:
       "https://github.com/Roqeeb-dev/khurizah-innovation-website.git",
     liveLink: "https://khurizah-innovation.vercel.app/",
   },
-  {
-    image: "/blog-bg.jpg",
-    title: "Digital Journal & Productivity Dashboard",
-    description:
-      "A role-based digital journal platform built with Next.js, featuring a secure admin dashboard, responsive design, clean UI, and persistent state management.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Zustand",
-      "Local Storage",
-      "SEO",
-    ],
-    githubRepoLink: "https://github.com/Roqeeb-dev/digital-journal.git",
-    liveLink: "https://digital-journal-five.vercel.app/",
-  },
-  {
-    image: "/port-bg.jpg",
-    title: "Personal Portfolio – Developer Showcase",
-    description:
-      "A high-performance personal portfolio website built with Next.js, featuring smooth animations, responsive layouts, modern UI/UX design, and SEO optimization.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    githubRepoLink: "https://github.com/Roqeeb-dev/personal-portfolio.git",
-    liveLink: "https://portfolio-tawny-omega-37.vercel.app/",
-  },
 ];
 
 export const techStackData: TechStackData[] = [
-  { text: "HTML5", proficiency: 90 },
-  { text: "CSS3", proficiency: 85 },
-  { text: "Tailwind CSS", proficiency: 90 },
-  { text: "JavaScript", proficiency: 75 },
-  { text: "TypeScript", proficiency: 75 },
-  { text: "React", proficiency: 80 },
-  { text: "Next.js", proficiency: 70 },
-  { text: "Node.js", proficiency: 70 },
-  { text: "Express.js", proficiency: 70 },
-  { text: "MongoDB", proficiency: 60 },
-  { text: "Git", proficiency: 75 },
-  { text: "RESTful APIs", proficiency: 70 },
+  { text: "HTML5", category: "frontend" },
+  { text: "CSS3", category: "frontend" },
+  { text: "Tailwind CSS", category: "frontend" },
+  { text: "Framer Motion", category: "frontend" },
+  { text: "JavaScript", category: "language" },
+  { text: "TypeScript", category: "language" },
+  { text: "React", category: "frontend" },
+  { text: "Next.js", category: "frontend" },
+  { text: "Zustand", category: "frontend" },
+  { text: "TanStack Query", category: "frontend" },
+  { text: "Node.js", category: "backend" },
+  { text: "Express.js", category: "backend" },
+  { text: "MongoDB", category: "backend" },
+  { text: "PostgreSQL", category: "backend" },
+  { text: "Prisma", category: "backend" },
+  { text: "Git", category: "tooling" },
+  { text: "GitHub", category: "tooling" },
+  { text: "Vercel", category: "tooling" },
+  { text: "Cloudinary", category: "tooling" },
+  { text: "RESTful APIs", category: "tooling" },
 ];
 
 export const ReasonsData = [
