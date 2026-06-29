@@ -64,10 +64,6 @@ export default function Hero() {
 
       {/* ── Main content ── */}
       <div className="relative flex-1 flex flex-col items-center justify-center w-full px-5 sm:px-8 pt-20 pb-10">
-        {/*
-          Mobile:  full width, centred, stacked
-          Desktop: max-w-2xl centred card feel — bold but contained
-        */}
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center text-center">
           {/* Eyebrow pill */}
           <motion.div
@@ -126,9 +122,6 @@ export default function Hero() {
             </motion.p>
           </AnimatePresence>
 
-          {/* Info pills
-              Mobile: full-width stacked column
-              Desktop: inline row, auto width */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -146,9 +139,6 @@ export default function Hero() {
             ))}
           </motion.div>
 
-          {/* CTAs
-              Mobile: full-width stacked column
-              Desktop: inline row, auto width */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
