@@ -7,7 +7,7 @@ import AboutCard from "./AboutCard";
 
 const stats = [
   { value: "3", label: "Production apps shipped" },
-  { value: "4.69", label: "First Class CGPA" },
+  { value: "First Class", label: "BSc Computer Science" },
   { value: "16-week", label: "Curriculum designed & taught" },
   { value: "500+", label: "Cognify visitors" },
 ];
@@ -120,7 +120,7 @@ export default function About() {
             <motion.a
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
-              href="/my-resume.pdf"
+              href="/Shafiriyu_Roqeeb_Taiwo_Frontend_Engineer_CV.pdf"
               download="Roqeeb_Shafiriyu_CV.pdf"
               target="_blank"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-secondary text-secondary-foreground text-sm font-medium hover:bg-secondary-hover transition-colors"

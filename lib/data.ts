@@ -25,13 +25,10 @@ export interface ProjectData {
   category: "frontend" | "fullstack";
   featured?: boolean;
   comingSoon?: boolean;
-
   recruiterSummary: string;
   metrics: ProjectMetric[];
-
   problem: string;
   engineerHighlights: string[];
-
   description: string;
   technologies: string[];
   githubRepoLink?: string;
@@ -94,7 +91,7 @@ export const experienceData: ExperienceData[] = [
       "Designed and deliver a 16-week curriculum covering Next.js, TypeScript, Tailwind CSS, and interview prep.",
   },
   {
-    role: "Best Graduating Student – Web Development Stack",
+    role: "Best Graduating Student, Web Development Stack",
     company: "IOTB-TECH 2025",
     period: "2025",
     type: "award",
@@ -102,44 +99,44 @@ export const experienceData: ExperienceData[] = [
       "Recognised among graduating students for excellence in the web development track.",
   },
   {
-    role: "BSc Computer Science – First Class",
+    role: "BSc Computer Science, First Class",
     company: "Lagos State University",
     period: "2022 – Aug 2026",
     type: "education",
-    description: "Top 10 in the department. Graduating August 2026.",
+    description: "Graduating August 2026.",
   },
 ];
 
 export const projectData: ProjectData[] = [
   {
     image: "/navigate_bg.jpg",
-    title: "LASU Navigate – Campus Navigation System",
+    title: "LASU Navigate, Campus Navigation System",
     shortTitle: "LASU Navigate",
     role: "Frontend (solo)",
     category: "frontend",
     featured: true,
 
     recruiterSummary:
-      "Web-GIS navigation app for a 400-acre university campus, built as a final-year project. Lets students find buildings, plan routes, and get guided turn-by-turn directions; live and publicly accessible.",
+      "Web-GIS navigation app for a 400-acre university campus, built as a final-year project. Lets students find buildings, plan routes, and get guided turn-by-turn directions. Live and publicly accessible.",
     metrics: [
       { value: "400+", label: "acre campus mapped" },
-      { value: "FYP", label: "first class project" },
+      { value: "FYP", label: "final year project" },
       { value: "~5 weeks", label: "active build time" },
       { value: "Live", label: "deployed on Vercel" },
     ],
 
     problem:
-      "LASU's 400-acre campus has no official digital navigation tool. New students and visitors routinely get lost. The goal was to build a web-based GIS solution that could map every building, compute navigable paths, and guide users in real time.",
+      "LASU's 400-acre campus has no official digital navigation tool. New students and visitors routinely get lost. The goal was to build a web-based GIS solution that maps every building, computes navigable paths, and guides users in real time.",
     engineerHighlights: [
       "Integrated Mapbox GL JS via react-map-gl for interactive campus tile rendering and custom GeoJSON overlays",
       "Built a guided navigation flow with step-by-step directions using Mapbox Directions API",
-      "Graph-based routing engine (Dijkstra) is in active development as a phase 2 feature to replace the current API-dependent routing",
-      "Architected the map state with React context to keep Mapbox instance decoupled from UI components",
-      "Handled complex coordinate transformations and bounding box constraints to lock the map to campus boundaries",
+      "Graph-based routing engine (Dijkstra) in active development as a phase 2 feature to replace the current API-dependent routing",
+      "Architected map state with React context to keep the Mapbox instance decoupled from UI components",
+      "Handled coordinate transformations and bounding box constraints to lock the map to campus boundaries",
     ],
 
     description:
-      "A web-GIS campus navigation app for Lagos State University. Students and visitors can search for buildings, view the interactive campus map, and get guided directions — built as a final-year project with Next.js 15 and Mapbox GL JS.",
+      "A web-GIS campus navigation app for Lagos State University. Students and visitors can search for buildings, view the interactive campus map, and get guided directions. Built as a final-year project with Next.js 15 and Mapbox GL JS.",
     technologies: [
       "Next.js 15",
       "TypeScript",
@@ -155,14 +152,14 @@ export const projectData: ProjectData[] = [
 
   {
     image: "/tayora-bg.jpg",
-    title: "Tayora Sustain – Circular Economy Marketplace",
+    title: "Tayora Sustain, Circular Economy Marketplace",
     shortTitle: "Tayora Sustain",
     role: "Frontend (solo)",
     category: "fullstack",
     featured: true,
 
     recruiterSummary:
-      "Three-sided marketplace connecting textile waste suppliers, requesters, and admins — built solo on the frontend in under 3 weeks to a stable beta. Handles role-based auth, image uploads, and a full material tracking flow.",
+      "Three-sided marketplace connecting textile waste suppliers, requesters, and admins. Built solo on the frontend in under 3 weeks to a stable beta with role-based auth, image uploads, and a full material tracking flow.",
     metrics: [
       { value: "3", label: "user portals" },
       { value: "< 3 weeks", label: "solo MVP" },
@@ -171,18 +168,17 @@ export const projectData: ProjectData[] = [
     ],
 
     problem:
-      "Textile waste is a growing problem in emerging markets with no structured collection or redistribution system. Tayora Sustain needed a marketplace where suppliers could list waste materials, requesters could match and claim them, and admins could oversee the entire flow — all with proper auth and role separation.",
+      "Textile waste is a growing problem in emerging markets with no structured collection or redistribution system. Tayora needed a marketplace where suppliers list materials, requesters claim them, and admins oversee the flow with proper auth and role separation.",
     engineerHighlights: [
       "Built the entire frontend solo: three distinct portals (supplier, requester, admin) with role-based routing and protected pages",
-      "Integrated TanStack Query for server state, Zustand scoped to UI-only state — no business logic in components",
-      "Implemented Cloudinary image uploads with client-side preview and optimistic UI updates",
-      "Debugged a complex cross-origin auth issue: the FastAPI backend's session cookies weren't persisting across origins — resolved by configuring a Next.js proxy rewrite and switching to sessionStorage for token persistence",
-      "Modelled the full material flow (submitted → collected → sorted → matched → fulfilled) as discrete status transitions, surfaced clearly in both portals",
-      "Stack: Next.js 15, TypeScript, Tailwind CSS v4, Zustand, TanStack Query, FastAPI backend (separate developer)",
+      "TanStack Query owns server state; Zustand scoped to UI-only state with no business logic in components",
+      "Cloudinary image uploads with client-side preview and optimistic UI updates",
+      "Debugged a cross-origin auth issue where FastAPI session cookies weren't persisting. Fixed by configuring a Next.js proxy rewrite and switching to sessionStorage for token persistence",
+      "Modelled the full material flow (submitted, collected, sorted, matched, fulfilled) as discrete status transitions surfaced clearly in both portals",
     ],
 
     description:
-      "A circular economy marketplace for textile waste, connecting suppliers, requesters, and admins in a three-sided platform. Built the complete frontend solo — auth, image uploads, role-based dashboards, and a full material lifecycle flow.",
+      "A circular economy marketplace for textile waste, connecting suppliers, requesters, and admins in a three-sided platform. Built the complete frontend solo with auth, image uploads, role-based dashboards, and a full material lifecycle flow.",
     technologies: [
       "Next.js 15",
       "TypeScript",
@@ -198,14 +194,14 @@ export const projectData: ProjectData[] = [
 
   {
     image: "/cognify-bg.png",
-    title: "Cognify – AI Learning Management System",
+    title: "Cognify, AI Learning Management System",
     shortTitle: "Cognify",
     role: "Frontend (solo)",
     category: "fullstack",
     featured: true,
 
     recruiterSummary:
-      "Full-featured LMS with student and instructor dashboards, course creation, multi-format lesson delivery, and an AI tutor stub. Frontend built solo — 500+ unique visitors tracked via Vercel Analytics since launch.",
+      "Full-featured LMS with student and instructor dashboards, course creation, multi-format lesson delivery, and an AI tutor stub. Frontend built solo with 500+ unique visitors tracked since launch.",
     metrics: [
       { value: "500+", label: "unique visitors" },
       { value: "2", label: "user roles" },
@@ -214,13 +210,13 @@ export const projectData: ProjectData[] = [
     ],
 
     problem:
-      "Build a production-grade LMS that supports multiple user roles, course creation workflows, progress tracking, and an AI assistant — with a clean separation between student and instructor experiences.",
+      "Build a production-grade LMS that supports multiple user roles, course creation workflows, progress tracking, and an AI assistant with a clean separation between student and instructor experiences.",
     engineerHighlights: [
-      "Established a ServerType / NormalizedType pattern: raw API responses are normalised at the service layer before touching component state — no scattered mapping logic",
+      "Established a ServerType / NormalizedType pattern: raw API responses normalised at the service layer before touching component state",
       "Hooks own toast notifications and return response values so parent components can chain actions without prop-drilling callbacks",
-      "Zustand scoped strictly to UI state; TanStack Query owns all server state — no cache duplication",
-      "Role guards implemented in hooks, not in layout components, so access logic is testable and reusable",
-      "OpenAI API integrated as an AI tutor stub — structured to swap in any LLM provider without touching UI code",
+      "Zustand scoped strictly to UI state; TanStack Query owns all server state with no cache duplication",
+      "Role guards implemented in hooks, not layout components, so access logic is testable and reusable",
+      "OpenAI API integrated as an AI tutor stub, structured to swap in any LLM provider without touching UI code",
     ],
 
     description:
@@ -242,14 +238,14 @@ export const projectData: ProjectData[] = [
 
   {
     image: "/khurizah-bg.jpg",
-    title: "Khurizah Innovation – Corporate Website",
+    title: "Khurizah Innovation, Corporate Website",
     shortTitle: "Khurizah Innovation",
     role: "Frontend (freelance)",
     category: "frontend",
     featured: false,
 
     recruiterSummary:
-      "Freelance corporate website for a tech company — responsive, animated, and performance-optimised. Delivered as a complete production build.",
+      "Freelance corporate website for a tech company. Responsive, animated, and performance-optimised. Delivered as a complete production build.",
     metrics: [
       { value: "100%", label: "responsive" },
       { value: "Freelance", label: "client project" },
@@ -259,13 +255,13 @@ export const projectData: ProjectData[] = [
     problem:
       "Khurizah Innovation needed a modern web presence to showcase their mission, services, and team without an existing design system or content structure in place.",
     engineerHighlights: [
-      "Built from scratch with no existing design system — defined layout, spacing, and component structure independently",
-      "Implemented scroll-triggered animations with Framer Motion for section reveals and hero transitions",
-      "Optimised Core Web Vitals: lazy-loaded images, minimal JS bundle, semantic HTML for accessibility",
+      "Built from scratch with no existing design system, defining layout, spacing, and component structure independently",
+      "Scroll-triggered animations with Framer Motion for section reveals and hero transitions",
+      "Core Web Vitals optimised: lazy-loaded images, minimal JS bundle, semantic HTML for accessibility",
     ],
 
     description:
-      "A responsive corporate website for Khurizah Innovation, featuring smooth animations, clean layouts, and optimised performance. Delivered as a freelance project.",
+      "A responsive corporate website for Khurizah Innovation featuring smooth animations, clean layouts, and optimised performance. Delivered as a freelance project.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
     githubRepoLink:
       "https://github.com/Roqeeb-dev/khurizah-innovation-website.git",

@@ -21,9 +21,9 @@ const infoPills = [
 
 const stats = [
   { value: "3", label: "Production apps", sub: "shipped solo" },
-  { value: "4.69", label: "First Class", sub: "CGPA · LASU" },
   { value: "500+", label: "Cognify visitors", sub: "since launch" },
   { value: "16wk", label: "Curriculum", sub: "designed & taught" },
+  { value: "2026", label: "First Class grad", sub: "Lagos State Uni" },
 ];
 
 const timelineIcons: Record<string, string> = {
@@ -38,12 +38,12 @@ const heroCopy = {
     heading: ["Frontend engineer,", "already", "shipping."],
     accentLine: 1,
     description:
-      "I've shipped 3 production apps solo across edtech, circular economy, and GIS — graduating First Class from Lagos State University in August 2026 and actively looking for remote frontend roles.",
+      "I've shipped 3 production apps solo across edtech, circular economy, and GIS. Graduating First Class from Lagos State University in August 2026 and actively looking for remote frontend roles.",
   },
   engineer: {
     eyebrow: "Frontend · Next.js · TypeScript",
-    heading: ["Crafting", "digital", "experiences."],
-    accentLine: 2,
+    heading: ["I build things", "people", "actually use."],
+    accentLine: 1,
     description:
       "I specialise in Next.js 15, TypeScript, and Tailwind CSS. I care about clean architecture, predictable state management, and interfaces that feel instant.",
   },
@@ -64,6 +64,10 @@ export default function Hero() {
 
       {/* ── Main content ── */}
       <div className="relative flex-1 flex flex-col items-center justify-center w-full px-5 sm:px-8 pt-20 pb-10">
+        {/*
+          Mobile:  full width, centred, stacked
+          Desktop: max-w-2xl centred card feel — bold but contained
+        */}
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center text-center">
           {/* Eyebrow pill */}
           <motion.div
@@ -122,6 +126,9 @@ export default function Hero() {
             </motion.p>
           </AnimatePresence>
 
+          {/* Info pills
+              Mobile: full-width stacked column
+              Desktop: inline row, auto width */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -139,6 +146,9 @@ export default function Hero() {
             ))}
           </motion.div>
 
+          {/* CTAs
+              Mobile: full-width stacked column
+              Desktop: inline row, auto width */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
