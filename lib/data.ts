@@ -43,7 +43,6 @@ export interface ExperienceData {
   description: string;
 }
 
-// Nav links
 export const links: { text: string; to: string }[] = [
   { text: "About", to: "about" },
   { text: "Projects", to: "projects" },

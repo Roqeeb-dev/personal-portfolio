@@ -11,17 +11,24 @@ import {
   ChevronRight,
   AlertTriangle,
   Zap,
+  Target,
+  Search,
+  Compass,
+  Wrench,
+  BadgeCheck,
+  Scale,
+  Rocket,
 } from "lucide-react";
 import type { CaseStudyData } from "@/lib/data";
 
 const SECTIONS = [
-  { key: "problem", label: "Problem", emoji: "🎯" },
-  { key: "discovery", label: "Discovery", emoji: "🔍" },
-  { key: "strategy", label: "Strategy", emoji: "🧭" },
-  { key: "design", label: "Design", emoji: "🛠️" },
-  { key: "validation", label: "Validation", emoji: "✅" },
-  { key: "tradeoffs", label: "Trade-offs", emoji: "⚖️" },
-  { key: "impact", label: "Impact", emoji: "🚀" },
+  { key: "problem", label: "Problem", icon: Target },
+  { key: "discovery", label: "Discovery", icon: Search },
+  { key: "strategy", label: "Strategy", icon: Compass },
+  { key: "design", label: "Design", icon: Wrench },
+  { key: "validation", label: "Validation", icon: BadgeCheck },
+  { key: "tradeoffs", label: "Trade-offs", icon: Scale },
+  { key: "impact", label: "Impact", icon: Rocket },
 ] as const;
 
 type SectionKey = (typeof SECTIONS)[number]["key"];
@@ -30,13 +37,25 @@ interface Props {
   data: CaseStudyData;
 }
 
-function SectionHeading({ emoji, label }: { emoji: string; label: string }) {
+import type { LucideIcon } from "lucide-react";
+
+function SectionHeading({
+  icon: Icon,
+  label,
+}: {
+  icon: LucideIcon;
+  label: string;
+}) {
   return (
     <div className="flex items-center gap-3 mb-5">
-      <span className="text-xl">{emoji}</span>
-      <h2 className="text-lg font-bold text-foreground uppercase tracking-widest text-sm">
+      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary">
+        <Icon className="h-4 w-4" />
+      </div>
+
+      <h2 className="text-sm font-bold uppercase tracking-widest text-foreground">
         {label}
       </h2>
+
       <div className="flex-1 h-px bg-border" />
     </div>
   );
@@ -172,7 +191,7 @@ export default function CaseStudyClient({ data }: Props) {
           <p className="text-[10px] font-bold uppercase tracking-widest text-foreground-muted mb-3">
             Sections
           </p>
-          {SECTIONS.map(({ key, label, emoji }) => (
+          {SECTIONS.map(({ key, label, icon: Icon }) => (
             <button
               key={key}
               onClick={() => scrollTo(key)}
@@ -182,7 +201,13 @@ export default function CaseStudyClient({ data }: Props) {
                   : "text-foreground-muted hover:text-foreground hover:bg-background-subtle"
               }`}
             >
-              <span className="text-base leading-none">{emoji}</span>
+              <Icon
+                className={`h-4 w-4 flex-shrink-0 ${
+                  activeSection === key
+                    ? "text-primary"
+                    : "text-foreground-muted"
+                }`}
+              />
               {label}
             </button>
           ))}
@@ -211,7 +236,7 @@ export default function CaseStudyClient({ data }: Props) {
               sectionRefs.current["problem"] = el;
             }}
           >
-            <SectionHeading emoji="🎯" label="Problem" />
+            <SectionHeading icon={Target} label="Problem" />
             <p className="text-base text-foreground-muted leading-relaxed">
               {data.sections.problem}
             </p>
@@ -223,7 +248,7 @@ export default function CaseStudyClient({ data }: Props) {
               sectionRefs.current["discovery"] = el;
             }}
           >
-            <SectionHeading emoji="🔍" label="Discovery" />
+            <SectionHeading icon={Search} label="Discovery" />
             <ul className="space-y-4">
               {data.sections.discovery.map((point, i) => (
                 <motion.li
@@ -249,7 +274,7 @@ export default function CaseStudyClient({ data }: Props) {
               sectionRefs.current["strategy"] = el;
             }}
           >
-            <SectionHeading emoji="🧭" label="Strategy" />
+            <SectionHeading icon={Compass} label="Strategy" />
             <p className="text-base text-foreground-muted leading-relaxed">
               {data.sections.strategy}
             </p>
@@ -261,7 +286,7 @@ export default function CaseStudyClient({ data }: Props) {
               sectionRefs.current["design"] = el;
             }}
           >
-            <SectionHeading emoji="🛠️" label="Design & Build" />
+            <SectionHeading icon={Wrench} label="Design & Build" />
             <div className="space-y-4">
               {data.sections.design.map((point, i) => (
                 <motion.div
@@ -287,7 +312,7 @@ export default function CaseStudyClient({ data }: Props) {
               sectionRefs.current["validation"] = el;
             }}
           >
-            <SectionHeading emoji="✅" label="Validation" />
+            <SectionHeading icon={BadgeCheck} label="Validation" />
             <p className="text-base text-foreground-muted leading-relaxed">
               {data.sections.validation}
             </p>
@@ -299,7 +324,7 @@ export default function CaseStudyClient({ data }: Props) {
               sectionRefs.current["tradeoffs"] = el;
             }}
           >
-            <SectionHeading emoji="⚖️" label="Trade-offs" />
+            <SectionHeading icon={Scale} label="Trade-offs" />
             <div className="space-y-4">
               {data.sections.tradeoffs.map((point, i) => (
                 <motion.div
@@ -325,7 +350,7 @@ export default function CaseStudyClient({ data }: Props) {
               sectionRefs.current["impact"] = el;
             }}
           >
-            <SectionHeading emoji="🚀" label="Impact" />
+            <SectionHeading icon={Rocket} label="Impact" />
             <div className="p-6 bg-primary/5 border border-primary/15">
               <p className="text-base text-foreground leading-relaxed">
                 {data.sections.impact}
