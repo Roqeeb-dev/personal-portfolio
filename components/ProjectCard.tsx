@@ -186,7 +186,7 @@ export function ProjectCard({ project, idx }: ProjectCardProps) {
 
         {/* Footer links */}
         {!project.comingSoon && (
-          <div className="flex items-center gap-4 mt-5 pt-4 border-t border-border">
+          <div className="flex items-center gap-4 mt-5 pt-4 border-t border-border flex-wrap">
             {project.liveLink && (
               <a
                 href={project.liveLink}
@@ -207,6 +207,15 @@ export function ProjectCard({ project, idx }: ProjectCardProps) {
               >
                 <Github className="w-3.5 h-3.5" />
                 Source
+              </a>
+            )}
+            {project.featured && (
+              <a
+                href={`/projects/${project.shortTitle.toLowerCase().replace(/\s+/g, "-")}`}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary-hover transition-colors ml-auto"
+              >
+                Case study
+                <ChevronRight className="w-3.5 h-3.5" />
               </a>
             )}
           </div>

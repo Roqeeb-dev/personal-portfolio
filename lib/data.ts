@@ -312,3 +312,209 @@ export const personalInfo: AboutData[] = [
   { title: "Phone", text: "+234 7087751548", icon: Phone },
   { title: "Location", text: "Lagos, Nigeria", icon: MapPin },
 ];
+
+export interface CaseStudySection {
+  problem: string;
+  discovery: string[];
+  strategy: string;
+  design: string[];
+  validation: string;
+  tradeoffs: string[];
+  impact: string;
+}
+
+export interface CaseStudyData {
+  slug: string;
+  title: string;
+  subtitle: string;
+  role: string;
+  timeline: string;
+  team: string;
+  liveLink?: string;
+  githubLink?: string;
+  coverImage: string;
+  tags: string[];
+  overview: string;
+  sections: CaseStudySection;
+}
+
+export const caseStudies: CaseStudyData[] = [
+  {
+    slug: "lasu-navigate",
+    title: "LASU Navigate",
+    subtitle:
+      "Campus navigation for a 400-acre university with no official wayfinding system",
+    role: "Frontend Engineer (solo)",
+    timeline: "~5 weeks active development",
+    team: "Solo project (Final Year Project)",
+    liveLink: "https://lasunav-sable.vercel.app/",
+    githubLink: "https://github.com/Roqeeb-dev/lasumap.git",
+    coverImage: "/navigate_bg.jpg",
+    tags: [
+      "Next.js 15",
+      "Mapbox GL JS",
+      "GeoJSON",
+      "TypeScript",
+      "React Context",
+    ],
+    overview:
+      "LASU Navigate is a web-based GIS campus navigation app for Lagos State University. Students and visitors can search for buildings, view an interactive campus map, and get guided directions across a 400-acre campus that had no official digital navigation tool before this.",
+
+    sections: {
+      problem:
+        "Lagos State University has over 400 acres of campus spread across multiple faculties, departments, and support buildings. New students, visitors, and even staff regularly get lost navigating between locations. There was no official wayfinding tool, no digital map, and no guidance system of any kind. The university relied entirely on asking people for directions and physical signage. For my final year project, I wanted to solve a real problem I had personally experienced.",
+
+      discovery: [
+        "I spoke with 8 fellow students across different years. All of them had a story about getting lost on campus, especially in their first semester.",
+        "The main pain points were: not knowing which building a department was in, not understanding the layout between the main gate and the back campus areas, and having no reference point when a lecturer mentioned a specific venue.",
+        "I tested the existing workaround most students used: Google Maps. It showed the general area but had no building-level detail for LASU and didn't know internal campus paths at all.",
+        "I identified three core user needs: find a specific building by name, understand the walking route between two points, and get real-time step-by-step guidance without needing to memorise the route.",
+      ],
+
+      strategy:
+        "I chose a web app over a mobile app deliberately. A web app means no installation friction, works on any device students already have, and is easier to share as a link. For the mapping layer I evaluated Google Maps Embed, Leaflet, and Mapbox GL JS. Mapbox won because of its custom tile styling, GeoJSON overlay support, and the Directions API for routing. Next.js 15 made sense as the foundation given my existing expertise and its server-side capabilities for future phases. I decided against building a custom routing engine from scratch initially, using the Mapbox Directions API as a working foundation while scoping a Dijkstra-based engine as a phase two feature.",
+
+      design: [
+        "Built an interactive campus map with custom GeoJSON overlays marking every building, faculty, and key landmark across the LASU campus.",
+        "Implemented a search interface that lets users type a building name and get a result with its location highlighted on the map.",
+        "Built guided navigation with step-by-step directions using the Mapbox Directions API, rendered as an overlay on the map with clear turn instructions.",
+        "Architected map state using React Context to keep the Mapbox GL JS instance decoupled from UI components, avoiding prop-drilling the map object across the tree.",
+        "Applied bounding box constraints so the map stays locked within campus boundaries and cannot be panned away accidentally.",
+        "Built the UI in Tailwind CSS with a clean, minimal design so the map remains the focus rather than chrome around it.",
+      ],
+
+      validation:
+        "I tested the navigation flow with 5 students on campus by asking them to find three specific buildings using the app without any guidance from me. All five completed the task. The main friction point was the search interface not handling partial or misspelled building names well, which I addressed by improving the fuzzy match logic. I also personally walked several routes while following the turn-by-turn directions to verify accuracy against the real physical paths.",
+
+      tradeoffs: [
+        "Used the Mapbox Directions API for routing rather than a custom engine. This means routing depends on Mapbox's understanding of the area, which is not always accurate for internal campus paths. A Dijkstra-based engine built on a custom campus graph would be more accurate but required more time than the FYP timeline allowed.",
+        "The GeoJSON data was manually collected by me walking the campus with a GPS app and logging coordinates. This means the data is as accurate as my own survey, not a professional GIS dataset.",
+        "Did not implement user accounts or saved routes in this phase. Returning users start fresh each time, which is acceptable for a wayfinding tool but limits personalisation.",
+        "Mobile responsiveness was secondary to desktop during development given the FYP context. A dedicated mobile-first iteration is planned.",
+      ],
+
+      impact:
+        "LASU Navigate is live and publicly accessible. It was submitted and accepted as a final year project on track for a First Class result. More meaningfully, I have had fellow students tell me they have actually used it to find buildings on campus, which is the outcome that matters most. The phase two roadmap includes a custom Dijkstra routing engine built on a proper campus pedestrian graph, offline support, and a reporting tool so students can flag map inaccuracies.",
+    },
+  },
+
+  {
+    slug: "tayora-sustain",
+    title: "Tayora Sustain",
+    subtitle:
+      "A three-sided circular economy marketplace for textile waste in the Nigerian fashion industry",
+    role: "Frontend Engineer (solo)",
+    timeline: "Under 3 weeks to stable beta",
+    team: "Frontend (me) + Backend developer (Python/FastAPI)",
+    liveLink: "https://tayorasustain.vercel.app",
+    githubLink: "https://github.com/Roqeeb-dev/tayora_sustain.git",
+    coverImage: "/tayora-bg.jpg",
+    tags: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Zustand",
+      "TanStack Query",
+      "Cloudinary",
+      "FastAPI",
+    ],
+    overview:
+      "Tayora Sustain is a circular economy marketplace connecting textile waste suppliers, material requesters, and platform admins in a three-sided flow. Suppliers list waste materials, requesters match and claim them, and admins oversee the entire lifecycle. I built the complete frontend solo while a separate developer handled the Python/FastAPI backend.",
+
+    sections: {
+      problem:
+        "The Nigerian fashion industry generates significant textile waste with no structured system for redistribution or reuse. Offcuts, deadstock, and production waste end up discarded when small designers, craftspeople, and manufacturers could use them. Tayora Sustain was conceived to bridge that gap by creating a platform where waste becomes a resource. The challenge on the frontend was building three distinct user experiences with different roles, permissions, and flows in a very short timeline.",
+
+      discovery: [
+        "The product direction came from the client and backend developer who had done prior research with fabric suppliers and small-scale fashion designers in Lagos.",
+        "Key insight from that research: suppliers needed a simple listing interface because most were not highly technical. Requesters needed to be able to browse and filter by material type and quantity. Admins needed visibility into the full flow without needing to intervene in every transaction.",
+        "I mapped out the three user journeys before writing any code: supplier (list, manage, track status), requester (browse, claim, track), admin (overview, approve, manage users). This became the architecture blueprint.",
+        "The most important frontend constraint identified upfront: role-based access had to be airtight. A requester must never see admin controls. A supplier must only see their own listings.",
+      ],
+
+      strategy:
+        "I chose a single Next.js 15 app with role-based routing rather than three separate apps. This kept the codebase unified and deployment simple. TanStack Query handled all server state because the material flow involved frequent status updates that needed to stay in sync. Zustand was scoped strictly to UI state only: modal open/close, active tab, sidebar collapse. No business logic touched Zustand. Cloudinary was the obvious choice for image uploads given it handles transformation and CDN delivery without backend involvement. Tailwind CSS v4 gave me the speed I needed to build three portal experiences inside three weeks.",
+
+      design: [
+        "Built three separate portal views (supplier, requester, admin) under a single authentication system with role-based redirects on login.",
+        "Supplier portal: listing creation form with Cloudinary image upload, client-side preview, and optimistic UI updates so suppliers see their listing appear immediately without waiting for a server response.",
+        "Requester portal: browsable material feed with filter controls by type and availability, a claim flow with status tracking, and a dashboard showing claimed materials and their current stage.",
+        "Admin portal: full overview of all listings, all users, and all transactions with controls to approve, flag, or remove content.",
+        "Modelled the material lifecycle as a discrete status machine: submitted, collected, sorted, matched, fulfilled. Each status transition was reflected clearly in both the supplier and requester views so both parties always knew where a material was in the flow.",
+        "Protected route handling via a custom hook that checked the Zustand auth state and redirected unauthenticated or wrong-role users before rendering.",
+      ],
+
+      validation:
+        "Tested with a small closed beta group of under 10 users including the client and a few real textile suppliers and designers. The main issues surfaced were: the listing form was too long on mobile (fixed by splitting into steps), and the status labels were not clear to non-technical users (renamed and added plain-language descriptions). I did not have the time or resources for formal usability testing, but the iterative feedback loop with the beta group was enough to catch the most critical friction points.",
+
+      tradeoffs: [
+        "Used sessionStorage for token persistence after a cross-origin auth issue with the FastAPI backend's httpOnly cookies not surviving across the Next.js frontend domain. A proper solution would be server-side cookie handling via a Next.js API route proxy, which is scoped for a later phase.",
+        "Optimistic UI updates on the supplier portal meant that in rare cases where the API call failed, the UI showed a listing that did not actually persist. This was mitigated with error boundaries and rollback logic but not fully eliminated.",
+        "Did not build a notification system in this phase. Users have to manually refresh or revisit their dashboard to see status changes. A real-time update system via WebSockets or polling is planned.",
+        "The three-portal architecture inside one codebase meant the bundle size was larger than a single-role app. This was acceptable for the beta but will need code-splitting attention before a public launch.",
+      ],
+
+      impact:
+        "Tayora Sustain is live in closed beta with active testers. The core flow, from listing a material to a requester claiming it, works end to end. The client has a functioning product to show potential partners and investors. For me personally, this project compressed more real engineering decisions into three weeks than most side projects manage in months: cross-origin auth debugging, optimistic updates, role-based architecture, and multi-portal UX all in a single codebase.",
+    },
+  },
+
+  {
+    slug: "cognify",
+    title: "Cognify",
+    subtitle:
+      "A full-featured AI-powered learning management system with student and instructor experiences",
+    role: "Frontend Engineer (solo)",
+    timeline: "~2 months, live since launch",
+    team: "Frontend (me) + Backend developer (Node.js/Express/MongoDB)",
+    liveLink: "https://ai-lms-ui.vercel.app",
+    githubLink: "https://github.com/Roqeeb-dev/ai-lms-ui.git",
+    coverImage: "/cognify-bg.png",
+    tags: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "TanStack Query",
+      "OpenAI API",
+    ],
+    overview:
+      "Cognify is a production-grade LMS with student and instructor dashboards, course creation, multi-format lesson delivery (video, PDF, text), progress tracking, and an AI tutor. I built the entire frontend solo while a backend developer handled the Node.js, Express, and MongoDB layer.",
+
+    sections: {
+      problem:
+        "Most LMS products are either too complex for small educators or too limited for serious course delivery. Cognify was scoped to hit the middle: a clean, fast interface for instructors to build and manage courses, and a focused learning experience for students with AI-assisted support. The frontend challenge was building two completely different user experiences with different data needs, different navigation structures, and different permissions without the codebase becoming unmanageable.",
+
+      discovery: [
+        "The product scope came from collaborative planning between me and the backend developer. We drew from common LMS patterns (Udemy, Moodle) and stripped them to what actually mattered for a first version.",
+        "Core instructor needs identified: create a course with multiple sections and lessons, upload different content types per lesson, see which students enrolled, track completion rates.",
+        "Core student needs: browse and enrol in courses, pick up where they left off, get help when stuck on a concept, see their progress clearly.",
+        "Key technical constraint identified early: the instructor and student dashboards needed to share some components (course cards, progress bars, video players) but have completely different data access patterns. This shaped the architecture more than anything else.",
+      ],
+
+      strategy:
+        "I established a clear data flow before writing any component: API service functions at the bottom, TanStack Query hooks in the middle, and presentational components at the top. No component fetches data directly. No hook stores UI state. Zustand handles only what TanStack Query cannot: modal state, active sidebar item, drawer open/close. This separation meant I could build and test each layer independently. For role handling I put guards in hooks rather than layout components so the access logic could be reused across different parts of the app without duplication. OpenAI integration was scoped as a stub in this phase, structured to accept any LLM provider without touching the UI.",
+
+      design: [
+        "Student dashboard: course library with enrolment flow, a dedicated learning view for each lesson with progress tracking, a sidebar showing course structure and completion status, and an AI tutor panel that accepts questions about the current lesson content.",
+        "Instructor dashboard: course creation wizard with section and lesson management, a file upload interface for video, PDF, and text content per lesson, an analytics overview showing enrolled students and completion rates, and a student roster per course.",
+        "Established a ServerType / NormalizedType pattern: raw API responses are transformed at the service layer into a consistent shape before they touch any hook or component. This meant no scattered null-checking or shape-mapping across the UI.",
+        "Hooks return both data and handler functions and own their own toast notifications. Parent components call a hook and get back everything they need without wiring up separate mutation handlers.",
+        "Role guards implemented as hook-level checks rather than layout wrappers. This made the guards reusable, testable, and independent of where in the component tree a protected feature lives.",
+      ],
+
+      validation:
+        "Cognify has been live for approximately two months and has tracked 500+ unique visitors via Vercel Analytics. I tested the core flows myself extensively before launch: full course creation as an instructor, full enrolment and lesson completion as a student, and the AI tutor response quality across different question types. I did not run formal user testing sessions but the analytics data and the absence of critical bug reports from visitors suggests the core flows are stable.",
+
+      tradeoffs: [
+        "The AI tutor in the current version is a stub. It sends the lesson content and student question to OpenAI but does not maintain conversational context across messages. A proper implementation would include message history in the prompt, which increases token usage and cost and was deferred to a later phase.",
+        "Video content is uploaded and served via the backend rather than through a dedicated video CDN. This works at current scale but will not hold up under heavy concurrent load. A migration to a service like Mux or Cloudinary Video is planned before any significant user growth.",
+        "Course analytics in the instructor dashboard are basic: enrolment count and completion rate only. Deeper engagement data (time per lesson, drop-off points, replay frequency) would require more instrumentation than the current backend exposes.",
+        "No mobile-optimised learning view in this phase. The lesson player layout breaks below 768px in ways that need a dedicated redesign rather than just responsive tweaks.",
+      ],
+
+      impact:
+        "Cognify is live, functional, and has had over 500 unique visitors since launch. The architecture decisions made on this project, specifically the ServerType/NormalizedType pattern, hook-level role guards, and the strict Zustand/TanStack Query separation, have carried into every project I have built since. It is the project that shifted how I think about frontend architecture from component-first to data-flow-first.",
+    },
+  },
+];
