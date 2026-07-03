@@ -362,7 +362,7 @@ export const caseStudies: CaseStudyData[] = [
 
     sections: {
       problem:
-        "Lagos State University has over 400 acres of campus spread across multiple faculties, departments, and support buildings. New students, visitors, and even staff regularly get lost navigating between locations. There was no official wayfinding tool, no digital map, and no guidance system of any kind. The university relied entirely on asking people for directions. For my final year project, I wanted to solve a real problem I had personally experienced.",
+        "Lagos State University has over 400 acres of campus spread across multiple faculties, departments, and support buildings. New students, visitors, and even staff regularly get lost navigating between locations. There was no official wayfinding tool, no digital map, and no guidance system of any kind. The university relied entirely on asking people for directions and physical signage. For my final year project, I wanted to solve a real problem I had personally experienced.",
 
       discovery: [
         "I spoke with 8 fellow students across different years. All of them had a story about getting lost on campus, especially in their first semester.",
