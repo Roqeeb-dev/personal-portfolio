@@ -109,6 +109,48 @@ export const experienceData: ExperienceData[] = [
 
 export const projectData: ProjectData[] = [
   {
+    image: "/compass-bg.jpg",
+    title: "LASU Compass AI, Digital Front Desk for LASU",
+    shortTitle: "LASU Compass AI",
+    role: "Frontend Developer & Pitch (team of 3)",
+    category: "frontend",
+    featured: true,
+
+    recruiterSummary:
+      "AI-powered digital front desk for Lagos State University, combining Gemma 4 with a curated LASU knowledge base to answer campus questions, guide students through procedures, and generate official letters. Built in a 4-hour hackathon sprint. Won 1st place.",
+    metrics: [
+      { value: "1st Place", label: "Build with Gemma: GDG on Campus LASU" },
+      { value: "4 hours", label: "build sprint" },
+      { value: "3", label: "AI-grounded features shipped" },
+      { value: "Live", label: "deployed on Vercel" },
+    ],
+
+    problem:
+      "LASU students lose real time to information scattered across WhatsApp groups, notice boards, and departmental offices, with no single reliable source for course registration, clearance procedures, or official letter formats. The goal was to build an AI assistant grounded in real LASU documentation that answers reliably and speeds up the administrative processes students get stuck on most.",
+    engineerHighlights: [
+      "Designed a shared chat pipeline (one hook, one set of components) powering both the Campus Assistant and Procedures Guide features, turning three planned features into two real build efforts under a 4-hour clock",
+      "Built a RAG-grounded chat interface where answers cite the LASU source document and section, reducing hallucination risk",
+      "Architected the Letter Generator around one shared rendering shell driven by per-letter-type configuration, based on real LASU letter formats, rather than a separate component per letter type",
+      "Built a live-updating letter preview with a Gemma-powered 'Polish with Gemma' step on the purpose field, and PDF export via html2pdf.js matching the on-screen preview exactly",
+      "Led frontend architecture, build, and the live pitch to judges",
+    ],
+
+    description:
+      "An AI-powered assistant for Lagos State University students. Combines Gemma 4 with a curated LASU knowledge base to answer campus questions, guide students through administrative procedures, and generate downloadable official letters. Built and shipped in a single 4-hour hackathon sprint with a team of three.",
+    technologies: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "FastAPI",
+      "ChromaDB",
+      "Gemma 4",
+      "RAG",
+      "html2pdf.js",
+    ],
+    githubRepoLink: "https://github.com/Roqeeb-dev/lasu-compass.git",
+    liveLink: "https://lasu-compass.vercel.app/",
+  },
+  {
     image: "/navigate_bg.jpg",
     title: "LASU Navigate, Campus Navigation System",
     shortTitle: "LASU Navigate",
@@ -395,6 +437,66 @@ export const caseStudies: CaseStudyData[] = [
 
       impact:
         "LASU Navigate is live and publicly accessible. It was submitted and accepted as a final year project on track for a First Class result. More meaningfully, I have had fellow students tell me they have actually used it to find buildings on campus, which is the outcome that matters most. The phase two roadmap includes a custom Dijkstra routing engine built on a proper campus pedestrian graph, offline support, and a reporting tool so students can flag map inaccuracies.",
+    },
+  },
+
+  {
+    slug: "lasu-compass-ai",
+    title: "LASU Compass AI",
+    subtitle:
+      "The AI-powered digital front desk for Lagos State University, built in a 4-hour hackathon sprint",
+    role: "Frontend Developer & Pitch (team of 3)",
+    timeline: "4-hour build sprint — Build with Gemma: GDG on Campus LASU",
+    team: "Team Pilot — Timilehin Oyinlola (Backend), Temitayo Honfoga (Product & Submission)",
+    liveLink: "https://lasu-compass.vercel.app/",
+    githubLink: "https://github.com/Roqeeb-dev/lasu-compass.git",
+    coverImage: "/compass_bg.jpg",
+    tags: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "FastAPI",
+      "ChromaDB",
+      "Gemma 4",
+      "RAG",
+    ],
+    overview:
+      "LASU Compass AI is an AI-powered assistant for Lagos State University students, combining Gemma 4 with a curated LASU knowledge base to answer campus questions, guide students through administrative procedures, and generate official letters. Built and shipped in a single 4-hour build sprint, it won 1st place at Build with Gemma: GDG on Campus LASU.",
+
+    sections: {
+      problem:
+        "LASU students lose real time to information that's scattered across WhatsApp groups, notice boards, and departmental offices, with no single reliable source. Course registration steps, clearance procedures, and SIWES deadlines get passed down informally and inconsistently, leading to delays, conflicting information, and unnecessary dependence on senior students for guidance. There was no centralised, trustworthy assistant built specifically for LASU's own processes.",
+
+      discovery: [
+        "The problem was well known firsthand: as a final-year student, I had personally experienced the stress of losing an active-semester course form with no way to regenerate it, and had watched classmates repeat the same scattered-information cycle every semester.",
+        "Our product manager drafted a PRD ahead of the sprint scoping three features against real recurring student pain points: general campus Q&A, step-by-step procedure guidance, and official letter generation.",
+        "Given the 4-hour format, discovery had to happen fast: rather than new user interviews, we grounded the Letter Generator specifically by reviewing real, previously submitted LASU letters (correction of result, over-registration, waiver) to extract the actual structure LASU expects, rather than guessing at a format.",
+      ],
+
+      strategy:
+        "With three features and a 4-hour clock, the core strategic decision was recognising that Campus Assistant and Procedures Guide didn't need to be built as two separate systems. Both are the same chat interface and the same backend endpoint; Procedures Guide simply adds pre-set buttons that send natural-language queries into the identical pipeline. That reframing turned three features into two real build efforts: one shared chat pipeline, and one form-based letter generator. On the backend, Timilehin used ChromaDB for retrieval-augmented generation so Gemma 4 answered from real LASU documentation rather than general knowledge, reducing hallucination risk. We deliberately cut voice input, image input, and response streaming from scope, judging the added build and testing risk not worth it in the time available, and listed them as roadmap items in the submission instead.",
+
+      design: [
+        "Built a shared component system (ChatMessage, ChatInput, TypingIndicator, a reusable useChat hook) so Campus Assistant and Procedures Guide could be assembled from the same pieces rather than duplicated.",
+        "Designed the Letter Generator around one shared rendering shell driven by per-letter-type configuration (recipient, through-chain, subject, body as data, not separate components per letter), based on the real LASU letter formats reviewed beforehand.",
+        "Built a live-updating letter preview that fills in as the form is completed, rather than a submit-then-reveal flow, so the letter feels tangible while being written.",
+        "Added a Gemma-powered 'Polish with Gemma' step on the letter's purpose field, turning a student's rough reason into submittable language, ensuring the model played a meaningful role in all three features, not just the chat ones.",
+        "Used html2pdf.js to export the exact rendered preview as a downloadable PDF, keeping the on-screen and downloaded versions visually identical.",
+        "Explicitly ruled out an early brainstorm idea to auto-fill a letter by swapping another student's name and credentials onto their form, since that would produce a forged academic document regardless of intent.",
+      ],
+
+      validation:
+        "With no time for a formal testing phase, validation happened through rapid internal iteration: running the RAG pipeline against real, likely student questions to check retrieval quality, and generating multiple real letter types end-to-end to confirm the shared template shell held up across different recipient chains and body content. The team did a full rehearsed run-through before judging, using real course and letter data rather than dummy placeholders, to catch anything that would break live.",
+
+      tradeoffs: [
+        "Chose template-based letter generation over full AI-generated letters for reliability; only the purpose field is AI-polished, keeping the legal/structural parts of each letter deterministic and safe for a live demo.",
+        "Skipped PostgreSQL and persistent user accounts entirely, since the MVP didn't need saved state beyond a single session.",
+        "Cut voice input, image input, and streaming responses to protect build time; each was judged to add more testing risk than it was worth within 4 hours.",
+        "The RAG knowledge base was limited to documents the team could gather and clean before the sprint started, so coverage is only as complete as that pre-sprint research.",
+      ],
+
+      impact:
+        "LASU Compass AI won 1st place at Build with Gemma: GDG on Campus LASU, judged on Gemma integration, innovation and impact, functionality, and presentation. I led the frontend architecture and build and delivered the live pitch to judges. The project is deployed and publicly accessible, with the Letter Generator producing downloadable PDFs based on real LASU letter formats. Next steps under consideration include the previously scoped roadmap items (voice input, image input) and hardening the knowledge base with a fuller set of official LASU documentation.",
     },
   },
 
