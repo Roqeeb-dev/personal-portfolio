@@ -109,6 +109,47 @@ export const experienceData: ExperienceData[] = [
 
 export const projectData: ProjectData[] = [
   {
+    image: "/lasu-nav-bg.png",
+    title: "LASU Campus Navigator, Interactive Campus Navigation for LASU",
+    shortTitle: "LASU Campus Navigator",
+    role: "Software Engineer (team of 3)",
+    category: "frontend",
+    featured: true,
+
+    recruiterSummary:
+      "Interactive campus navigation platform for Lagos State University's Ojo campus, covering 100+ landmarks across 18 faculties and 90 departments. Delivers turn-by-turn routing, offline-capable route planning, and a rule-based campus assistant. Took over and rebuilt a teammate's existing prototype into a production-ready app under ongoing academic supervision.",
+    metrics: [
+      { value: "100+", label: "landmarks mapped" },
+      { value: "18", label: "faculties covered" },
+      { value: "90", label: "departments covered" },
+      { value: "Live", label: "deployed on Vercel" },
+    ],
+
+    problem:
+      "Navigating LASU's Ojo campus is difficult for new and returning students alike, with no reliable digital way to find faculties, departments, or offices, or to plan a route across the campus's walkways. The goal was to build a map-based navigation tool that works reliably on campus, including in low-GPS conditions, backed by an accurate and structured database of campus locations.",
+    engineerHighlights: [
+      "Took over and rebuilt a teammate's existing Leaflet-based prototype after the team decided to consolidate around the strongest version rather than merge two separate builds",
+      "Refactored the core AppContent structure to reduce brittleness, splitting logic into smaller helpers, components, and hooks, and separating the landing page out to make the app maintainable at scale",
+      "Implemented coordinate-based turn-by-turn routing across Ojo campus walkways, including route planning that functions without GPS",
+      "Built a rule-based campus assistant for locating faculties, departments, and offices, plus a graph-debug view for inspecting and validating the routing system",
+      "Working through a phased roadmap (3D building display, custom pedestrian routing, admin dashboard, offline PWA support) under weekly progress reviews with a supervising professor",
+    ],
+
+    description:
+      "An interactive campus navigation app for Lagos State University's Ojo campus. Features an interactive map, smart turn-by-turn navigation, intelligent search, a rule-based campus assistant, and real-time synchronization across a structured campus database of 100+ landmarks, 18 faculties, and 90 departments. Built with a two-person team, with ongoing development into a full offline-capable PWA.",
+    technologies: [
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Firebase",
+      "Leaflet",
+    ],
+    githubRepoLink:
+      "https://github.com/khaleedmogaji/LASU-Campus-Navigator.git",
+    liveLink: "https://lasu-campus-navigator.vercel.app/",
+  },
+  {
     image: "/compass-bg.jpg",
     title: "LASU Compass AI, Digital Front Desk for LASU",
     shortTitle: "LASU Compass AI",
@@ -497,6 +538,64 @@ export const caseStudies: CaseStudyData[] = [
 
       impact:
         "LASU Compass AI won 1st place at Build with Gemma: GDG on Campus LASU, judged on Gemma integration, innovation and impact, functionality, and presentation. I led the frontend architecture and build and delivered the live pitch to judges. The project is deployed and publicly accessible, with the Letter Generator producing downloadable PDFs based on real LASU letter formats. Next steps under consideration include the previously scoped roadmap items (voice input, image input) and hardening the knowledge base with a fuller set of official LASU documentation.",
+    },
+  },
+
+  {
+    slug: "lasu-campus-navigator",
+    title: "LASU Campus Navigator",
+    subtitle:
+      "Interactive campus navigation for Lagos State University's Ojo campus, taken over mid-build and rebuilt into a production-ready app",
+    role: "Software Engineer (team of 3)",
+    timeline:
+      "Ongoing — Phase 1 development, weekly reviews with a supervising professor",
+    team: "Roqeeb (Engineer),Khaleed Mogaji and Tijani Olamilekan",
+    liveLink: "https://lasu-campus-navigator.vercel.app/",
+    githubLink: "https://github.com/khaleedmogaji/LASU-Campus-Navigator.git",
+    coverImage: "/campus-navigator-bg.jpg",
+    tags: [
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Firebase",
+      "Leaflet",
+    ],
+    overview:
+      "LASU Campus Navigator is an interactive navigation app for Lagos State University's Ojo campus, covering 100+ landmarks across 18 faculties and 90 departments. It combines an interactive map, turn-by-turn routing, intelligent search, and a rule-based campus assistant, backed by a structured, real-time-synced campus database. Started as a two-person team project, it's now being developed toward a fuller offline-capable app.",
+
+    sections: {
+      problem:
+        "New and returning LASU students have no reliable digital way to find faculties, departments, or offices, or to plan a route across the Ojo campus's walkways. The goal was a map-based navigation tool that works reliably on campus, including in low-GPS conditions, backed by an accurate, structured database of campus locations.",
+
+      discovery: [
+        "The project started as parallel work: Khaleed, a product designer with limited coding experience, had already produced a Leaflet-based prototype that was visually stronger than the other in-progress version.",
+        "Rather than merge two separately built codebases, the team made the call to consolidate around Khaleed's existing build and improve it from there, avoiding the integration risk of stitching together divergent implementations.",
+        "The project runs under academic supervision, with weekly progress reviews with Prof. Aribisala Benjamin shaping the phased roadmap.",
+      ],
+
+      strategy:
+        "With the decision made to build on Khaleed's existing prototype rather than start fresh, the core strategic move was stabilizing the codebase before adding features. The original AppContent structure was becoming brittle as functionality grew, so the priority was refactoring it into smaller helpers, components, and hooks, and separating the landing page out of the main app flow, before layering on admin routing and further features. Phase 1 prioritizes offline PWA support as the next iteration, alongside custom pedestrian routing, an admin dashboard, and analytics, followed by dedicated testing and feedback weeks.",
+
+      design: [
+        "Implemented coordinate-based turn-by-turn routing across Ojo campus walkways, including route planning that works without GPS.",
+        "Built a rule-based campus assistant for locating faculties, departments, and offices by name.",
+        "Added a graph-debug view for inspecting and validating the underlying routing system during development.",
+        "Refactored AppContent by splitting logic into smaller helpers, components, and hooks, and pulling the landing page out of the main app shell to keep the codebase manageable as scope grew.",
+        "Structured the campus database around real-time synchronization, covering 100+ landmarks, 18 faculties, and 90 departments.",
+      ],
+
+      validation:
+        "Validation runs through the weekly progress reviews with the supervising professor, which check the routing accuracy and campus database completeness against real Ojo campus geography as each phase lands.",
+
+      tradeoffs: [
+        "Chose to consolidate on one teammate's existing prototype rather than merge two independent builds, trading a from-scratch rebuild for faster consolidation at the cost of inheriting that codebase's existing structure.",
+        "Prioritized refactoring the core app structure before adding new features, accepting slower visible progress in exchange for a codebase that could support the full Phase 1 roadmap.",
+        "Deferred AI-powered assistant capabilities, QR-code navigation, indoor routing, and 3D building display to a later stage — 3D display in particular is lower priority and may not ship at all — keeping the current build focused on core map-based navigation and offline reliability.",
+      ],
+
+      impact:
+        "The app is live and deployed on Vercel, currently delivering an interactive campus map, smart navigation, intelligent search, a rule-based campus assistant, a structured campus database, real-time synchronization, responsive UX, voice navigation, and performance optimization. Phase 1 work is underway on offline PWA support (the current priority), custom pedestrian routing, an admin dashboard, and analytics, with AI-powered assistant features, indoor routing, and possibly 3D building display planned further out.",
     },
   },
 
